@@ -1,30 +1,23 @@
-<?php
-
-$name = $_POST['name'];
-$email = $_POST['email'];
-$message = $_POST['message'];
-// $formcontent="Сообщение с сайта superhorse.ru\n\nИмя: $name \n\nПочта: $email \n\nСообщение: $message";
-$formcontent = 
-'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html
   xmlns="http://www.w3.org/1999/xhtml"
-  style="margin: 0;padding: 0;font-size: 100%;font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+  style="margin: 0;padding: 0;font-size: 100%;font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;line-height: 1.65;"
 >
   <head
-    style="margin: 0;padding: 0;font-size: 100%;font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+    style="margin: 0;padding: 0;font-size: 100%;font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;line-height: 1.65;"
   >
     <meta
       http-equiv="Content-Type"
       content="text/html; charset=utf-8"
-      style="margin: 0;padding: 0;font-size: 100%;font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+      style="margin: 0;padding: 0;font-size: 100%;font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;line-height: 1.65;"
     />
     <meta
       name="viewport"
       content="width=device-width"
-      style="margin: 0;padding: 0;font-size: 100%;font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+      style="margin: 0;padding: 0;font-size: 100%;font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;line-height: 1.65;"
     />
 
@@ -32,20 +25,20 @@ $formcontent =
     <link
       rel="stylesheet"
       href="css/simple.css"
-      style="margin: 0;padding: 0;font-size: 100%;font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+      style="margin: 0;padding: 0;font-size: 100%;font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;line-height: 1.65;"
     />
 
     <style
       type="text/css"
-      style="margin: 0;padding: 0;font-size: 100%;font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+      style="margin: 0;padding: 0;font-size: 100%;font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;line-height: 1.65;"
     >
       * {
         margin: 0;
         padding: 0;
         font-size: 100%;
-        font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+        font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;
         line-height: 1.65;
       }
@@ -171,40 +164,40 @@ $formcontent =
     </style>
   </head>
   <body
-    style="margin: 0;padding: 0;font-size: 100%;font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+    style="margin: 0;padding: 0;font-size: 100%;font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;line-height: 1.65;height: 100%;background: #efefef;-webkit-font-smoothing: antialiased;-webkit-text-size-adjust: none;width: 100% !important;"
   >
     <table
       class="body-wrap"
-      style="margin: 0;padding: 0;font-size: 100%;font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+      style="margin: 0;padding: 0;font-size: 100%;font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;line-height: 1.65;height: 100%;background: #efefef;-webkit-font-smoothing: antialiased;-webkit-text-size-adjust: none;width: 100% !important;"
     >
       <tr
-        style="margin: 0;padding: 0;font-size: 100%;font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+        style="margin: 0;padding: 0;font-size: 100%;font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;line-height: 1.65;"
       >
         <td
           class="container"
-          style="margin: 0 auto !important;padding: 0;font-size: 100%;font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+          style="margin: 0 auto !important;padding: 0;font-size: 100%;font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;line-height: 1.65;display: block !important;clear: both !important;max-width: 580px !important;"
         >
           <!-- Message start -->
           <table
-            style="margin: 0;padding: 0;font-size: 100%;font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+            style="margin: 0;padding: 0;font-size: 100%;font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;line-height: 1.65;border-collapse: collapse;width: 100% !important;"
           >
             <tr
-              style="margin: 0;padding: 0;font-size: 100%;font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+              style="margin: 0;padding: 0;font-size: 100%;font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;line-height: 1.65;"
             >
               <td
                 align="center"
                 class="masthead"
-                style="margin: 0;padding: 80px 0;font-size: 100%;font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+                style="margin: 0;padding: 80px 0;font-size: 100%;font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;line-height: 1.65;background: #71bc37;color: white;"
               >
                 <h1
-                  style="margin: 0 auto !important;padding: 0;font-size: 32px;font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+                  style="margin: 0 auto !important;padding: 0;font-size: 32px;font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;line-height: 1.25;margin-bottom: 20px;max-width: 90%;text-transform: uppercase;"
                 >
                   Something Big...
@@ -212,23 +205,23 @@ $formcontent =
               </td>
             </tr>
             <tr
-              style="margin: 0;padding: 0;font-size: 100%;font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+              style="margin: 0;padding: 0;font-size: 100%;font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;line-height: 1.65;"
             >
               <td
                 class="content"
-                style="margin: 0;padding: 30px 35px;font-size: 100%;font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+                style="margin: 0;padding: 30px 35px;font-size: 100%;font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;line-height: 1.65;background: white;"
               >
                 <h2
-                  style="margin: 0;padding: 0;font-size: 28px;font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+                  style="margin: 0;padding: 0;font-size: 28px;font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;line-height: 1.25;margin-bottom: 20px;"
                 >
                   Hi Stranger,
                 </h2>
 
                 <p
-                  style="margin: 0;padding: 0;font-size: 16px;font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+                  style="margin: 0;padding: 0;font-size: 16px;font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;line-height: 1.65;font-weight: normal;margin-bottom: 20px;"
                 >
                   Kielbasa venison ball tip shankle. Boudin prosciutto
@@ -243,26 +236,26 @@ $formcontent =
                 </p>
 
                 <table
-                  style="margin: 0;padding: 0;font-size: 100%;font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+                  style="margin: 0;padding: 0;font-size: 100%;font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;line-height: 1.65;border-collapse: collapse;width: 100% !important;"
                 >
                   <tr
-                    style="margin: 0;padding: 0;font-size: 100%;font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+                    style="margin: 0;padding: 0;font-size: 100%;font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;line-height: 1.65;"
                   >
                     <td
                       align="center"
-                      style="margin: 0;padding: 0;font-size: 100%;font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+                      style="margin: 0;padding: 0;font-size: 100%;font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;line-height: 1.65;"
                     >
                       <p
-                        style="margin: 0;padding: 0;font-size: 16px;font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+                        style="margin: 0;padding: 0;font-size: 16px;font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;line-height: 1.65;font-weight: normal;margin-bottom: 20px;"
                       >
                         <a
                           href="#"
                           class="button"
-                          style="margin: 0;padding: 0;font-size: 100%;font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+                          style="margin: 0;padding: 0;font-size: 100%;font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;line-height: 1.65;color: white;text-decoration: none;display: inline-block;background: #71bc37;border: solid #71bc37;border-width: 10px 20px 8px;font-weight: bold;border-radius: 4px;"
                           >Share the Awesomeness</a
                         >
@@ -272,25 +265,25 @@ $formcontent =
                 </table>
 
                 <p
-                  style="margin: 0;padding: 0;font-size: 16px;font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+                  style="margin: 0;padding: 0;font-size: 16px;font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;line-height: 1.65;font-weight: normal;margin-bottom: 20px;"
                 >
-                  By the way, if you\'re wondering where you can find more of
+                  By the way, if you're wondering where you can find more of
                   this fine meaty filler, visit
                   <a
                     href="http://baconipsum.com"
-                    style="margin: 0;padding: 0;font-size: 100%;font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+                    style="margin: 0;padding: 0;font-size: 100%;font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;line-height: 1.65;color: #71bc37;text-decoration: none;"
                     >Bacon Ipsum</a
                   >.
                 </p>
 
                 <p
-                  style="margin: 0;padding: 0;font-size: 16px;font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+                  style="margin: 0;padding: 0;font-size: 16px;font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;line-height: 1.65;font-weight: normal;margin-bottom: 20px;"
                 >
                   <em
-                    style="margin: 0;padding: 0;font-size: 100%;font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+                    style="margin: 0;padding: 0;font-size: 100%;font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;line-height: 1.65;"
                     >– Mr. Pen</em
                   >
@@ -301,55 +294,55 @@ $formcontent =
         </td>
       </tr>
       <tr
-        style="margin: 0;padding: 0;font-size: 100%;font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+        style="margin: 0;padding: 0;font-size: 100%;font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;line-height: 1.65;"
       >
         <td
           class="container"
-          style="margin: 0 auto !important;padding: 0;font-size: 100%;font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+          style="margin: 0 auto !important;padding: 0;font-size: 100%;font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;line-height: 1.65;display: block !important;clear: both !important;max-width: 580px !important;"
         >
           <!-- Message start -->
           <table
-            style="margin: 0;padding: 0;font-size: 100%;font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+            style="margin: 0;padding: 0;font-size: 100%;font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;line-height: 1.65;border-collapse: collapse;width: 100% !important;"
           >
             <tr
-              style="margin: 0;padding: 0;font-size: 100%;font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+              style="margin: 0;padding: 0;font-size: 100%;font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;line-height: 1.65;"
             >
               <td
                 class="content footer"
                 align="center"
-                style="margin: 0;padding: 30px 35px;font-size: 100%;font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+                style="margin: 0;padding: 30px 35px;font-size: 100%;font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;line-height: 1.65;background: none;"
               >
                 <p
-                  style="margin: 0;padding: 0;font-size: 14px;font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+                  style="margin: 0;padding: 0;font-size: 14px;font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;line-height: 1.65;font-weight: normal;margin-bottom: 0;color: #888;text-align: center;"
                 >
                   Sent by
                   <a
                     href="#"
-                    style="margin: 0;padding: 0;font-size: 100%;font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+                    style="margin: 0;padding: 0;font-size: 100%;font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;line-height: 1.65;color: #888;text-decoration: none;font-weight: bold;"
                     >Company Name</a
                   >, 1234 Yellow Brick Road, OZ, 99999
                 </p>
                 <p
-                  style="margin: 0;padding: 0;font-size: 14px;font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+                  style="margin: 0;padding: 0;font-size: 14px;font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;line-height: 1.65;font-weight: normal;margin-bottom: 0;color: #888;text-align: center;"
                 >
                   <a
                     href="mailto:"
-                    style="margin: 0;padding: 0;font-size: 100%;font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+                    style="margin: 0;padding: 0;font-size: 100%;font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;line-height: 1.65;color: #888;text-decoration: none;font-weight: bold;"
                     >hello@company.com</a
                   >
                   |
                   <a
                     href="#"
-                    style="margin: 0;padding: 0;font-size: 100%;font-family: \'Avenir Next\', \'Helvetica Neue\', \'Helvetica\', Helvetica,
+                    style="margin: 0;padding: 0;font-size: 100%;font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica,
           Arial, sans-serif;line-height: 1.65;color: #888;text-decoration: none;font-weight: bold;"
                     >Unsubscribe</a
                   >
@@ -361,16 +354,4 @@ $formcontent =
       </tr>
     </table>
   </body>
-</html>';
-$recipient = "san4es-ag@ya.ru";
-$subject = "superhorse.ru – Сообщение с сайта";
-
-$headers  = 'MIME-Version: 1.0' . "\r\n";
-$headers .= "Content-type: text/html; charset=utf-8 \r\n";
-$headers .= 'From: SUPER HORSE NUTRITION <classichorse@yandex.ru>\r\n';
-
-if(isset($name) and isset($email)) {
-    mail($recipient, $subject, $formcontent, $headers);
-}
-
-?>
+</html>

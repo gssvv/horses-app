@@ -8,7 +8,7 @@
         .item 
           a(@click="togglePolicy()") Classic Horse Nutrition © {{ currentYear }}
 
-        .item: nuxt-link(to='policy') Политика компании
+        .item: nuxt-link(to='/policy') Политика компании
 
         .item.hidden(:class='{ active: showPolicy }') Логотип Classic Horse Nutrition является зарегистрированным товарным знаком и охраняется законом Российской Федерации. Super Mix и Lacto Enzyme являются официально зарегистрированными торговыми обозначениями и охраняются законом Российской Федерации. <br>The Classic Horse Nutrition logo is a registered trademark and is protected by law of the Russian Federation. Super Mix and Lacto Enzyme are officially registered trademarks and are protected by the law of the Russian Federation.
 

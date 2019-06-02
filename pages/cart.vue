@@ -11,6 +11,23 @@
               i.fas.fa-shopping-cart
               |Открыть каталог
 
+        h2.title Оформление заказа
+        h3.note Заполните все необходимые поля
+
+        form.user-data
+          .field
+            .tip ФИО:
+            input.input(type='text' name='name' v-model='userForm.name.value' placeholder='Иванов Иван Иванович')
+            .error {{ userForm.name.alert }}
+          .field
+            .tip Номер телефона:
+            <masked-input mask="\+1 (111) 111-11-11" class='input' name='phone'   v-model='userForm.phone.value' placeholder='+7 (900) 000-00-00'/>
+            .error {{ userForm.phone.alert }}
+          .field
+            .tip Email:
+            input.input(type='text' name='email' v-model='userForm.email.value' placeholder='customer@example.com')
+            .error {{ userForm.email.alert }}
+
         .result
           form.row(ref='payForm' action='https://merchant.roboxchange.com/Index.aspx' method='POST')
             .hidden
@@ -19,16 +36,23 @@
               input(name='InvId' value='0')
               input(name='Desc' value='Заказ на сайте superhorse.ru')
               input(name='SignatureValue' :value='signatureValue')
-              textarea(name='Shp_info' :value='productInfo')
               input(name='IncCurrLabel' value='RUB')
               input(name='Culture' value='ru')
               input(name='Encoding' value='utf-8')
+
+              input(name='Shp_email' v-model='userForm.email.value')
+              input(name='Shp_name' v-model='userForm.name.value')
+              textarea(name='Shp_info' :value='productInfo')
+              input(name='Shp_phone' v-model='userForm.phone.value')
+
 
             .button.big(@click='order()') Заказать
             a.price 
               | Итог: 
               span.num {{ finalPrice }}р
           .tip 
+            | После оплаты с вами свяжется наш специалист для уточнения деталей
+            br
             | Условия доставки обсуждаются идивидуально
             br
             nuxt-link(to='/contacts') Связяться с нами
@@ -37,6 +61,7 @@
 </template>
 
 <script>
+import MaskedInput from 'vue-masked-input'
 import CartItem from '@/components/CartItem'
 import { mapState } from 'vuex'
 import productsList from '@/assets/productsList'
@@ -52,7 +77,25 @@ export default {
     return {
       finalPrice: 0,
       signatureValue: null,
-      productInfo: null
+      productInfo: null,
+      userForm: {
+        name: {
+          value: '',
+          alert: '',
+          required: true
+        },
+        phone: {
+          value: '',
+          alert: '',
+          required: true
+        },
+        email: {
+          value: '',
+          alert: '',
+          required: true,
+          regExp: /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/
+        }
+      }
     }
   },
   created() {
@@ -73,7 +116,46 @@ export default {
     }
   },
   methods: {
+    prepareMail() {
+      let essentialMsg = 'Поле обязятельно для заполнения'
+      let incorrectMsg = 'Поле заполнено некорректно'
+      let error = false
+
+      for (let i in this.userForm) {
+        let field = this.userForm[i]
+
+        if (field.required && field.value.length < 1) {
+          field.alert = essentialMsg
+          error = true
+          continue
+        } else {
+          field.alert = ''
+        }
+
+        if (field.regExp && !field.regExp.test(field.value)) {
+          field.alert = incorrectMsg
+          error = true
+          continue
+        } else {
+          field.alert = ''
+        }
+      }
+
+      return error ? false : true
+    },
     async order() {
+      if (!this.prepareMail())
+        return this.$toasted.show(
+          `Форма заполнена неверно. Проверьте корректность заполнения полей.`,
+          {
+            theme: 'toasted-primary',
+            position: 'top-right',
+            className: 'error',
+            duration: 50000,
+            icon: 'times'
+          }
+        )
+
       let { payForm } = this.$refs
       let productInfo = this.getItems()
       let productInfoString = productInfo.reduce(
@@ -93,6 +175,10 @@ export default {
       let bodyFormData = new FormData()
       bodyFormData.set('summ', this.finalPrice)
       bodyFormData.set('info', productInfoString)
+
+      bodyFormData.set('email', this.userForm.email.value)
+      bodyFormData.set('name', this.userForm.name.value)
+      bodyFormData.set('phone', this.userForm.phone.value)
 
       axios({
         method: 'post',
@@ -116,7 +202,8 @@ export default {
         result += i.box * i.price * i.amount
       }
 
-      this.finalPrice = result
+      // this.finalPrice = result
+      this.finalPrice = 1
     },
     getItems() {
       let result = []
@@ -142,7 +229,7 @@ export default {
       this.$store.dispatch('updateProduct', { id, amount })
     }
   },
-  components: { CartItem }
+  components: { CartItem, MaskedInput }
 }
 </script>
 
@@ -167,6 +254,7 @@ export default {
         .price
           color: $primary
       .products
+        margin-bottom: 70px
         margin-top: 30px
         display: grid
         grid-template-columns: repeat(auto-fill, minmax(300px, auto))
@@ -190,6 +278,37 @@ export default {
             font-size: 40px
           &:hover
             opacity: 1
+      .user-data
+        display: grid
+        margin-top: 30px
+        max-width: 300px
+        width: 100%
+        grid-gap: 15px 20px
+        .field
+          width: 100%
+          &.message
+            grid-row: span 3
+            .input
+              height: 155px
+          .tip
+            color: #999
+            font-size: 14px
+            margin: 0 0 2px 0
+          .input
+            @include shadow(1)
+            border-radius: 4px
+            width: 100%
+            background-color: #fff
+            border: none
+            font-family: 'Source Sans Pro', sans-serif
+            font-size: 16px
+            padding: 7.5px 10px
+            &:focus
+              outline: none
+          .error
+            font-size: 13px 
+            color: #DC4C40
+            margin: 2px 0 0 0
       .result
         padding-top: 50px
         .row

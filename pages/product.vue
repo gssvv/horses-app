@@ -26,6 +26,7 @@
             .item(:class="{active: activeSec == 'ing'}", id='ing') Ингредиенты
             .item(:class="{active: activeSec == 'note'}", id='note') Примечание
             .item(:class="{active: activeSec == 'rec'}", id='rec') Рекомендации по кормлению
+            a.item(:href='getPDF(productInfo.title)' target='_blank' download).pdf Скачать в PDF-формате
           .chars-content
             transition(name="fade" mode="out-in" :duration="200")
               .components(v-if="activeSec == 'comp'" key='comp')
@@ -85,6 +86,16 @@ export default {
     if (!this.productInfo) this.$router.push('/catalogue')
   },
   methods: {
+    getPDF(title) {
+      return (
+        '/pdf/' +
+        title
+          .toLowerCase()
+          .split(' ')
+          .join('-') +
+        '.pdf'
+      )
+    },
     toggleBar(e) {
       if (e.srcElement.id) this.activeSec = e.srcElement.id
     },
@@ -196,6 +207,10 @@ export default {
             border-radius: 2px
             margin: 5px
             transition: .25s ease
+            &.pdf
+              background-color: #b90605
+              color: #fff
+              text-decoration: none
             &.active
               background-color: $primary
               color: #fff

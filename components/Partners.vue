@@ -5,15 +5,25 @@
       .content
         h2.section-title Наши партнеры
       .content.par-wrapper
-        .item(v-for='i in 7' :key='i')
-          img(:src='require(`@/assets/img/partners/p-i-${i}.png`)' alt='Партнеры Classic Horse Nutrition')
+        a.item(v-for='(link, i) in links' :key='i' :href='link' target='_blank')
+          img(:src='require(`@/assets/img/partners/p-i-${i + 1}.png`)' alt='Партнеры Classic Horse Nutrition')
 
 </template>
 
 <script>
 export default {
   data() {
-    return {}
+    return {
+      links: [
+        'http://1k-horse.com',
+        'http://www.kirovhorse.ru',
+        'http://www.samovolov.ru',
+        'http://malkastud.ru',
+        'http://www.terskarabian.com/ru',
+        'http://konezavod.ru',
+        'http://www.khip.ru'
+      ]
+    }
   }
 }
 </script>
@@ -44,6 +54,10 @@ export default {
           display: grid
           justify-content: center
           margin: 15px 7.5px
+          text-decoration: none
+          transition: .25s ease
+          &:hover
+            opacity: .8
           img
             width: 100%
         

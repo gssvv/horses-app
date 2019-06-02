@@ -23,6 +23,7 @@
     "pug-plain-loader": "^1.0.0",
     "sass-loader": "^7.1.0",
     "vue-fancybox": "^1.0.3",
+    "vue-masked-input": "^0.5.2",
     "vue-toasted": "^1.1.26"
   },
   "devDependencies": {

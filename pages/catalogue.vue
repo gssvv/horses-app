@@ -3,7 +3,6 @@
     .container
       .content.title
         h1.title Каталог
-          h3.note: a(href='#' target='_blank') Скачать в PDF-формате
       .content.wrapper
         product-block(v-for="item in blocks" :key="item.id" v-bind="item")
 
@@ -55,12 +54,6 @@ export default {
         font-weight: 700
         text-transform: uppercase
         margin: 0
-      .note
-        font-size: 14px 
-        font-weight: 600
-        margin: 0
-        a
-          color: $primary
     .content.wrapper
       display: grid
       grid-gap: 30px 15px

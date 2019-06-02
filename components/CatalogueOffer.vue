@@ -33,7 +33,7 @@ export default {
       align-items: center
       color: #fff
       .text
-        font-size: 24px
+        font-size: 20px
         font-weight: 400
       .button
         margin: 0
