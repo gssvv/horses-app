@@ -242,6 +242,7 @@ export default {
               font-family: 'Source Sans Pro', sans-serif
               font-size: 16px
               padding: 7.5px 10px
+              resize: none
               &:focus
                 outline: none
             .error

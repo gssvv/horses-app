@@ -160,16 +160,12 @@ export default {
       let productInfo = this.getItems()
       let productInfoString = productInfo.reduce(
         (prev, current, index, arr) => {
-          return `${prev}${current.title} – ${current.box *
-            current.price *
-            current.amount} руб. (${current.amount} по ${current.box *
-            current.price} руб.); `
+          return `${prev}${current.title}:| ${current.amount} x ${current.box *
+            current.price}р;`
         },
         ''
       )
-      productInfoString += `Всего: ${this.finalPrice} руб. за ${
-        this.getCartAmount
-      } товаров.`
+      productInfoString = productInfoString.slice(0, -1)
 
       this.productInfo = productInfoString
       let bodyFormData = new FormData()

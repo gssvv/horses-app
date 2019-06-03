@@ -19,7 +19,7 @@ body,
   -webkit-text-size-adjust: none; }
 
 a {
-  color: #71bc37;
+  color: #2A713E
   text-decoration: none; }
 
 .text-center {
@@ -34,11 +34,16 @@ a {
 .button {
   display: inline-block;
   color: white;
-  background: #71bc37;
-  border: solid #71bc37;
+  background: #2A713E;
+  border: solid #2A713E;
   border-width: 10px 20px 8px;
   font-weight: bold;
+  text-decoration: none;
   border-radius: 4px; }
+
+a:link:not(.button), a:visited:not(.button) {
+  color: #2A713E;
+}
 
 h1, h2, h3, h4, h5, h6 {
   margin-bottom: 20px;
@@ -64,17 +69,48 @@ p, ul, ol {
   font-weight: normal;
   margin-bottom: 20px; }
 
+.list {
+  margin: 30px 0 20px 0;
+}
+
+.list td {
+  padding: 5px 10px;
+}
+
+.list tr {
+  background-color: #f5f5f5;
+  border-top: 1px solid #ccc;
+}
+
+.list .result{
+  background-color: #fff !important;
+  font-size: 22px;
+  font-weight: 600;
+}
+.list .result td{
+  padding-top: 15px;
+}
+
+.list .price {
+  font-weight: 600;
+}
+
+.m {
+  margin: 50px 0 20px 0;
+}
+
 .container {
   display: block !important;
   clear: both !important;
   margin: 0 auto !important;
-  max-width: 580px !important; }
+  max-width: 640px !important; }
   .container table {
     width: 100% !important;
     border-collapse: collapse; }
   .container .masthead {
     padding: 80px 0;
-    background: #71bc37;
+    background-image: url('../images/placeholder.jpg');
+    background-size: cover;
     color: white; }
     .container .masthead h1 {
       margin: 0 auto !important;
