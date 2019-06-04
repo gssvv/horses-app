@@ -4,7 +4,7 @@ $name = $_POST['name'];
 $email = $_POST['email'];
 $message = $_POST['message'] ? $_POST['message'] : '<i>Не указано</i>';
 
-$recipient = "san4es-ag@ya.ru";
+$recipient = "classichorse@yandex.ru";
 $subject = "Форма обратной связи";
 
 $headers  = 'MIME-Version: 1.0' . "\r\n";

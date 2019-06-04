@@ -34,7 +34,7 @@ foreach($customerInfoArr as $tr) {
 
 $subject = 'Уведомление о покупке';
 
-$adminEmail = "san4es-ag@ya.ru";
+$adminEmail = "classichorse@yandex.ru";
 
 $headers  = 'MIME-Version: 1.0' . "\r\n";
 $headers .= "Content-type: text/html; charset=utf-8 \r\n";
@@ -435,7 +435,7 @@ if(isset($customerEmail) and isset($invId)) {
 }
 
 header("HTTP/1.1 301 Moved Permanently");
-header("Location: http://superhorse.ru/m?status=success&mail=$customerEmail");
+header("Location: http://superhorse.ru/cart?status=success&email=$customerEmail&id=$invId");
 exit();
 
 ?>

@@ -1,0 +1,4 @@
+#ErrorDocument 403 /closed.html
+#order deny,allow
+#deny from all
+#allow from 88.135.62.36

@@ -104,7 +104,7 @@ export default {
 
       this.$toasted.show(`Добавлено в корзину (${this.amount})`, {
         theme: 'toasted-primary',
-        position: 'bottom-center',
+        position: 'top-right',
         duration: 5000,
         icon: 'cart-plus',
         action: {

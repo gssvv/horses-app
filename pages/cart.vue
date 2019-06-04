@@ -2,60 +2,86 @@
   .cart
     .container
       .content
-        h1.title Корзина
-        h3.note {{ getCartAmount }} товаров на сумму 
-          span.price {{ finalPrice }}р
-        .products
-          cart-item(v-for='item in items' v-bind='item' :key="item.id")
-          nuxt-link.more(to='/catalogue')
-              i.fas.fa-shopping-cart
-              |Открыть каталог
+        .message-wrapper(v-if='finalInfo.status')
+          .success(v-if="finalInfo.status == 'success'")
+            h1.icon.green: i.fas.fa-check-circle
 
-        h2.title Оформление заказа
-        h3.note Заполните все необходимые поля
+            h1.title Заказ <span class='green'>№{{ finalInfo.id }}</span> создан
 
-        form.user-data
-          .field
-            .tip ФИО:
-            input.input(type='text' name='name' v-model='userForm.name.value' placeholder='Иванов Иван Иванович')
-            .error {{ userForm.name.alert }}
-          .field
-            .tip Номер телефона:
-            <masked-input mask="\+1 (111) 111-11-11" class='input' name='phone'   v-model='userForm.phone.value' placeholder='+7 (900) 000-00-00'/>
-            .error {{ userForm.phone.alert }}
-          .field
-            .tip Email:
-            input.input(type='text' name='email' v-model='userForm.email.value' placeholder='customer@example.com')
-            .error {{ userForm.email.alert }}
+            p.desc Заказ <span class='green'>№{{ finalInfo.id }}</span> успешно начат. На указанную вами почту <span class='green'>{{ finalInfo.email }}</span> было отправлено уведомление с информацией о покупке (письмо может по ошибке попасть в папку СПАМ). 
+            p.desc Также, в ходе транзакции на указанные вами контактные данные был отправлен <span class='green'>электронный чек</span> – настоятельно рекомендуем сохранить его.
+            p.desc Если у вас возникли проблемы с заказом или есть другие вопросы – обратитесь к нам по телефону <a href='tel:+7 (928) 332-22-29'>+7 (928) 332-22-29</a> или по почте <a href='classichorse@yandex.ru'>classichorse@yandex.ru</a>
 
-        .result
-          form.row(ref='payForm' action='https://merchant.roboxchange.com/Index.aspx' method='POST')
-            .hidden
-              input(name='MrchLogin' value='hbhorse')
-              input(name='OutSum' :value='finalPrice')
-              input(name='InvId' value='0')
-              input(name='Desc' value='Заказ на сайте superhorse.ru')
-              input(name='SignatureValue' :value='signatureValue')
-              input(name='IncCurrLabel' value='RUB')
-              input(name='Culture' value='ru')
-              input(name='Encoding' value='utf-8')
-
-              input(name='Shp_email' v-model='userForm.email.value')
-              input(name='Shp_name' v-model='userForm.name.value')
-              textarea(name='Shp_info' :value='productInfo')
-              input(name='Shp_phone' v-model='userForm.phone.value')
+            nuxt-link(to='/').button.big На главную
 
 
-            .button.big(@click='order()') Заказать
-            a.price 
-              | Итог: 
-              span.num {{ finalPrice }}р
-          .tip 
-            | После оплаты с вами свяжется наш специалист для уточнения деталей
-            br
-            | Условия доставки обсуждаются идивидуально
-            br
-            nuxt-link(to='/contacts') Связяться с нами
+          .fail(v-else)
+            h1.icon: i.fas.fa-exclamation-circle
+
+            h1.title Ошибка
+
+            p.desc При обработке заказа возникла ошибка. Попробуйте позже, либо обратитесь к нам по телефону <a href='tel:+7 (928) 332-22-29'>+7 (928) 332-22-29</a> или по почте <a href='classichorse@yandex.ru'>classichorse@yandex.ru</a>
+
+            nuxt-link(to='/').button.big На главную
+
+
+        .cart-wrapper(v-else)
+          h1.title Корзина
+          h3.note {{ getCartAmount }} товаров на сумму 
+            span.price {{ finalPrice }}р
+          .products
+            cart-item(v-for='item in items' v-bind='item' :key="item.id")
+            nuxt-link.more(to='/catalogue')
+                i.fas.fa-shopping-cart
+                |Открыть каталог
+
+        .order-wrapper(v-if='getCartAmount > 0 && !finalInfo.status')
+
+          h2.title Оформление заказа
+          h3.note Заполните все необходимые поля
+
+          form.user-data
+            .field
+              .tip ФИО:
+              input.input(type='text' name='name' v-model='userForm.name.value' placeholder='Иванов Иван Иванович')
+              .error {{ userForm.name.alert }}
+            .field
+              .tip Номер телефона:
+              <masked-input mask="\+1 (111) 111-11-11" class='input' name='phone'   v-model='userForm.phone.value' placeholder='+7 (900) 000-00-00'/>
+              .error {{ userForm.phone.alert }}
+            .field
+              .tip Email:
+              input.input(type='text' name='email' v-model='userForm.email.value' placeholder='customer@example.com')
+              .error {{ userForm.email.alert }}
+
+          .result
+            form.row(ref='payForm' action='https://merchant.roboxchange.com/Index.aspx' method='POST')
+              .hidden
+                input(name='MrchLogin' value='hbhorse')
+                input(name='OutSum' :value='finalPrice')
+                input(name='InvId' value='0')
+                input(name='Desc' value='Заказ на сайте superhorse.ru')
+                input(name='SignatureValue' :value='signatureValue')
+                input(name='IncCurrLabel' value='RUB')
+                input(name='Culture' value='ru')
+                input(name='Encoding' value='utf-8')
+
+                input(name='Shp_email' v-model='userForm.email.value')
+                input(name='Shp_name' v-model='userForm.name.value')
+                textarea(name='Shp_info' :value='productInfo')
+                input(name='Shp_phone' v-model='userForm.phone.value')
+
+
+              .button.big(@click='order()') Заказать
+              a.price 
+                | Итог: 
+                span.num {{ finalPrice }}р
+            .tip 
+              | После оплаты с вами свяжется наш специалист для уточнения деталей
+              br
+              | Условия доставки обсуждаются идивидуально
+              br
+              nuxt-link(to='/contacts') Связяться с нами
 
     
 </template>
@@ -75,6 +101,7 @@ export default {
   },
   data() {
     return {
+      finalInfo: {},
       finalPrice: 0,
       signatureValue: null,
       productInfo: null,
@@ -99,7 +126,20 @@ export default {
     }
   },
   created() {
+    if (this.$route.query.status) {
+      this.finalInfo.status = this.$route.query.status
+      if (this.finalInfo.status == 'success') {
+        this.finalInfo.email = this.$route.query.email
+        this.finalInfo.id = this.$route.query.id
+
+        this.$store.dispatch('cleanCart')
+      }
+    }
+
     this.updateFinalPrice()
+  },
+  mounted() {
+    console.log()
   },
   computed: {
     ...mapState(['cart']),
@@ -151,7 +191,7 @@ export default {
             theme: 'toasted-primary',
             position: 'top-right',
             className: 'error',
-            duration: 50000,
+            duration: 5000,
             icon: 'times'
           }
         )
@@ -238,6 +278,21 @@ export default {
       @include shadow(1)
       padding: 50px 40px
       background-color: #fff
+      .message-wrapper
+        max-width: 500px
+        margin: auto
+        text-align: center
+        margin-bottom: 50px
+        .icon
+          font-size: 110px
+          margin: 15px 0
+        .red
+          color: #f44336
+        .green
+          color: $primary
+          font-weight: 600
+        .desc
+          margin: 30px 0
       .title
         font-size: 36px
         font-weight: 700

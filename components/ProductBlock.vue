@@ -33,7 +33,7 @@ export default {
 
       this.$toasted.show(`Добавлено в корзину (1)`, {
         theme: 'toasted-primary',
-        position: 'bottom-center',
+        position: 'top-right',
         duration: 5000,
         icon: 'cart-plus',
         action: {

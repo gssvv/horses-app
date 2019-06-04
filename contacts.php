@@ -9,7 +9,7 @@ $region = $_POST['region'] ? $_POST['region'] : '<i>Не указано</i>';
 $humset = $_POST['humset'] ? $_POST['humset'] : '<i>Не указано</i>';
 $message = $_POST['message'] ? $_POST['message'] : '<i>Не указано</i>';
 
-$recipient = "san4es-ag@ya.ru";
+$recipient = "classichorse@yandex.ru";
 $subject = "Заявка на сотрудничество";
 
 $headers  = 'MIME-Version: 1.0' . "\r\n";

@@ -58,6 +58,13 @@ export const actions = {
     commit('SET_CART', decoded)
   },
 
+  cleanCart({ state, commit, dispatch }) {
+    for (let id in Object.keys(state.cart)) {
+      commit('SET_PRUDUCT', { id, amount: 0 })
+    }
+    dispatch('updateCookies')
+  },
+
   updateCookies({ state }) {
     let token = jwt.sign(state.cart, 'key')
     Cookies.set('cart', token)
