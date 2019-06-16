@@ -238,8 +238,8 @@ export default {
         result += i.box * i.price * i.amount
       }
 
-      // this.finalPrice = result
-      this.finalPrice = 1
+      this.finalPrice = result
+      // this.finalPrice = 1
     },
     getItems() {
       let result = []
