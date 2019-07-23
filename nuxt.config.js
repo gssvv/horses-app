@@ -46,7 +46,7 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['@/plugins/Toasted.js'],
+  plugins: ['@/plugins/Toasted.js', '@/plugins/YaMetrics.js'],
 
   /*
    ** Nuxt.js modules

@@ -33,8 +33,8 @@
                   .column(v-for='column in productInfo.components')
                     .row.title {{ column.title }}
                     .row(v-for='row in column.list')
-                      .title {{ row[0] }}
-                      .value {{ row[1] }}
+                      .title(v-if='row') {{ row[0] }}
+                      .value(v-if='row') {{ row[1] }}
               .ingredients(v-if="activeSec == 'ing'" key='ing')
                 ul.list
                   li.item(v-for="item in productInfo.ingredients.list") 
