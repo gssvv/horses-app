@@ -1,0 +1,9 @@
+User-agent: *
+
+Allow: /
+Disallow: /policy
+Disallow: /cart
+
+Host: superhorse.ru
+
+Sitemap: http://superhorse.ru/sitemap.xml

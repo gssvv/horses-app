@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> 
+<url>
+    <loc>http://superhorse.ru/</loc>
+    <lastmod>2019-08-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+</url>
+<url>
+    <loc>http://superhorse.ru/catalogue</loc>
+    <lastmod>2019-08-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+</url>
+<url>
+    <loc>http://superhorse.ru/product?id=1</loc>
+    <lastmod>2019-08-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+</url>
+<url>
+    <loc>http://superhorse.ru/product?id=2</loc>
+    <lastmod>2019-08-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+</url>
+<url>
+    <loc>http://superhorse.ru/product?id=3</loc>
+    <lastmod>2019-08-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+</url>
+<url>
+    <loc>http://superhorse.ru/product?id=4</loc>
+    <lastmod>2019-08-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+</url>
+<url>
+    <loc>http://superhorse.ru/korotko-o-produkcii</loc>
+    <lastmod>2019-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+</url>
+<url>
+    <loc>http://superhorse.ru/chto-my-predlagaem</loc>
+    <lastmod>2019-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+</url>
+<url>
+    <loc>http://superhorse.ru/contacts</loc>
+    <lastmod>2019-08-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+</url>
+</urlset>

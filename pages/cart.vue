@@ -6,10 +6,10 @@
           .success(v-if="finalInfo.status == 'success'")
             h1.icon.green: i.fas.fa-check-circle
 
-            h1.title Заказ <span class='green'>№{{ finalInfo.id }}</span> создан
+            h1.title Заказ <span class='green' v-if='finalInfo.id'>№{{ finalInfo.id }}</span> создан
 
-            p.desc Заказ <span class='green'>№{{ finalInfo.id }}</span> успешно начат. На указанную вами почту <span class='green'>{{ finalInfo.email }}</span> было отправлено уведомление с информацией о покупке (письмо может по ошибке попасть в папку СПАМ). 
-            p.desc Также, в ходе транзакции на указанные вами контактные данные был отправлен <span class='green'>электронный чек</span> – настоятельно рекомендуем сохранить его.
+            p.desc Заказ <span class='green' v-if='finalInfo.id'>№{{ finalInfo.id }}</span> успешно начат. На указанную вами почту <span class='green'>{{ finalInfo.email }}</span> было отправлено уведомление с информацией о заказе (письмо может по ошибке попасть в папку СПАМ). 
+            p.desc(v-if='finalInfo.id') Также, в ходе транзакции на указанные вами контактные данные был отправлен <span class='green'>электронный чек</span> – настоятельно рекомендуем сохранить его.
             p.desc Если у вас возникли проблемы с заказом или есть другие вопросы – обратитесь к нам по телефону <a href='tel:+7 (928) 332-22-29'>+7 (928) 332-22-29</a> или по почте <a href='classichorse@yandex.ru'>classichorse@yandex.ru</a>
 
             nuxt-link(to='/').button.big На главную
@@ -47,12 +47,22 @@
               .error {{ userForm.name.alert }}
             .field
               .tip Номер телефона:
-              <masked-input mask="\+1 (111) 111-11-11" class='input' name='phone'   v-model='userForm.phone.value' placeholder='+7 (900) 000-00-00'/>
+              masked-input(mask="\+1 (111) 111-11-11" class='input' name='phone'   v-model='userForm.phone.value' placeholder='+7 (900) 000-00-00')
               .error {{ userForm.phone.alert }}
             .field
               .tip Email:
               input.input(type='text' name='email' v-model='userForm.email.value' placeholder='customer@example.com')
               .error {{ userForm.email.alert }}
+            .field
+              .tip Оплата:
+              p.radio
+                input(type="radio" v-model='userForm.payment.value' value='online')
+                span Онлайн
+              p.radio
+                input(type="radio" v-model='userForm.payment.value' value='receipt')
+                span При получении (в любом отделении ТК CDEK)
+
+              .error {{ userForm.payment.alert }}
 
           .result
             form.row(ref='payForm' action='https://merchant.roboxchange.com/Index.aspx' method='POST')
@@ -77,7 +87,7 @@
                 | Итог: 
                 span.num {{ finalPrice }}р
             .tip 
-              | После оплаты с вами свяжется наш специалист для уточнения деталей
+              | После оформления заявку с вами свяжется наш специалист для уточнения деталей
               br
               | Условия доставки обсуждаются идивидуально
               br
@@ -120,7 +130,12 @@ export default {
           value: '',
           alert: '',
           required: true,
-          regExp: /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/
+          regExp: /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/i
+        },
+        payment: {
+          value: 'online',
+          alert: '',
+          required: true
         }
       }
     }
@@ -207,6 +222,9 @@ export default {
       )
       productInfoString = productInfoString.slice(0, -1)
 
+      if (this.userForm.payment.value == 'receipt')
+        return this.orderReceipt(productInfoString)
+
       this.productInfo = productInfoString
       let bodyFormData = new FormData()
       bodyFormData.set('summ', this.finalPrice)
@@ -229,6 +247,27 @@ export default {
         setTimeout(() => {
           payForm.submit()
         }, 100)
+      })
+    },
+    orderReceipt(productInfoString) {
+      let bodyFormData = new FormData()
+      bodyFormData.set('summ', this.finalPrice)
+      bodyFormData.set('info', productInfoString)
+
+      bodyFormData.set('email', this.userForm.email.value)
+      bodyFormData.set('name', this.userForm.name.value)
+      bodyFormData.set('phone', this.userForm.phone.value)
+
+      axios({
+        method: 'post',
+        url: '/order.php',
+        data: bodyFormData,
+        config: { headers: { 'Content-Type': 'multipart/form-data' } }
+      }).then(res => {
+        this.$router.push({ path: '/cart?status=success' })
+        setTimeout(() => {
+          location.reload()
+        }, 1)
       })
     },
     updateFinalPrice() {
@@ -345,6 +384,10 @@ export default {
             color: #999
             font-size: 14px
             margin: 0 0 2px 0
+          .radio
+            font-size: 15px
+            input
+              margin-right: 8px
           .input
             @include shadow(1)
             border-radius: 4px

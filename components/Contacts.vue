@@ -24,19 +24,23 @@
             a.item(href="https://ok.ru/profile/574397461583" target="_blank"): i.fab.fa-odnoklassniki
 
         .form-wrapper
-          h2.title Обратная связь
+          h2.title Предварительный заказ
           form.form
             .field
               .tip Имя:
-              input.input(type='text' name='name' v-model='form.name.value')
+              input.input(type='text' name='name' v-model='form.name.value' placeholder='Иван Иванов')
               .error {{ form.name.alert }}
             .field
               .tip Email:
-              input.input(type='text' name='email' v-model='form.email.value')
+              input.input(type='text' name='email' v-model='form.email.value' placeholder='ivan.ivanov@mail.ru')
               .error {{ form.email.alert }}
             .field
+              .tip Номер телефона::
+              <masked-input mask="+1 (111) 111-11-11" class='input' name='phone' v-model='form.phone.value' placeholder='+7 (900) 000-00-00'/>
+              .error {{ form.phone.alert }}
+            .field
               .tip Сообщение:
-              textarea.input(name='message' v-model='form.message.value')
+              textarea.input(name='message' v-model='form.message.value' placeholder='Расскажите, какой вопрос или продукт вас интересует')
               .error {{ form.message.alert }}
             .button(v-if='!result' @click.prevent='prepareMailAndSend()') Отправить
             .announce(v-else) {{ result }}
@@ -48,6 +52,7 @@
 
 <script>
 import axios from 'axios'
+import MaskedInput from 'vue-masked-input'
 
 export default {
   data() {
@@ -62,7 +67,12 @@ export default {
           value: '',
           alert: '',
           required: true,
-          regExp: /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/
+          regExp: /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/i
+        },
+        phone: {
+          value: '',
+          alert: '',
+          required: false
         },
         message: {
           value: '',
@@ -106,6 +116,7 @@ export default {
       bodyFormData.set('name', this.form.name.value)
       bodyFormData.set('email', this.form.email.value)
       bodyFormData.set('message', this.form.message.value)
+      bodyFormData.set('phone', this.form.phone.value)
 
       this.result = 'Отправляется...'
 
@@ -123,6 +134,9 @@ export default {
             'При отправке сообщения возникла ошибка. Свяжитесь с нами по почте spcon@bk.ru'
         })
     }
+  },
+  components: {
+    MaskedInput
   }
 }
 </script>
@@ -177,12 +191,14 @@ export default {
             font-size: 14px
             color: #666
             text-align: center
+            align-self: flex-end
           .socials
             grid-column: span 2
             display: grid
             grid-auto-flow: column
             justify-content: flex-start
             grid-gap: 10px
+            align-self: flex-start
             .item
               font-size: 24px
               width: 26px
@@ -208,6 +224,9 @@ export default {
             display: grid
             justify-items: flex-end
             grid-gap: 10px
+            textarea
+              resize: vertical
+              height: 100px
             .field
               width: 100%
               .tip

@@ -1,5 +1,5 @@
 <template lang="pug">
-  .policy
+  .text-page
     .container
       .content
         h2.title Политика компании
@@ -26,26 +26,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-@import '@/assets/style/variables.sass'
-
-.policy
-  .container
-    .content
-      @include shadow(1)
-      padding: 50px 40px
-      background-color: #fff
-      .title
-        font-size: 36px
-        font-weight: 700
-        text-transform: uppercase
-        text-align: center
-        margin: 0 0 10px 0
-      p
-        text-align: justify
-
-      @include respond-to(sm)
-        padding: 30px 15px
-        .title
-          font-size: 28px
+@import '@/assets/style/text-page.sass'
 
 </style>

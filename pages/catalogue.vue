@@ -18,7 +18,7 @@ import productsList from '@/assets/productsList'
 export default {
   head() {
     return {
-      title: 'Каталог – Classic Horse Nutrition'
+      title: 'Каталог'
     }
   },
   data() {

@@ -1,7 +1,7 @@
 module.exports = {
   mode: 'spa',
   router: {
-    base: process.env.DEV ? '/' : '/' //'/horses-new',
+    base: process.env.DEV ? '/' : '/' ///horses-new'
   },
 
   /*

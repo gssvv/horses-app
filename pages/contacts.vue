@@ -4,10 +4,10 @@
       .content
         .contact-wrapper
           h2.title Сотрудничество
-          p.note Стать партнером
+          p.note Стать дилером
           form.form
             .field
-              .tip Название ООО, ИП:
+              .tip Название ООО/ИП/ФИО дилера:
               input.input(type='text' name='name' v-model='form.name.value')
               .error {{ form.name.alert }}
             .field
@@ -65,7 +65,15 @@ import axios from 'axios'
 export default {
   head() {
     return {
-      title: 'Стать партнером – Classic Horse Nutrition'
+      title: 'Контакты',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'Мы предлагаем сотрудничество с нашей компанией. На этой странице вы можете заполнить форму заявки, после чего мы свяжемся с вами для обсуждения дальшнейшего сотрудничества с Classic Horse Nutrition.'
+        }
+      ]
     }
   },
   data() {
@@ -84,7 +92,7 @@ export default {
           value: '',
           alert: '',
           required: true,
-          regExp: /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/
+          regExp: /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/i
         },
         phone: {
           value: '',

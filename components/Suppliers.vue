@@ -4,7 +4,7 @@
     .container
       .content
         h2.section-title Поставщики ингредиентов
-        p.tip: nuxt-link(to='/contacts') Стать партнером
+        p.tip: nuxt-link(to='/contacts') Стать дилером
       .content.sup-wrapper
         .item
           img(src='@/assets/img/suppliers/lallemand.jpg' alt='Поставщик Lallemand')

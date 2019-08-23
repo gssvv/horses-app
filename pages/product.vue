@@ -8,7 +8,7 @@
 
             .item.large: img(src='@/assets/img/products/box.jpg' :alt='productInfo.title')
           .info
-            h2.title {{ productInfo.title }}
+            h1.title {{ productInfo.title }}
             p.desc {{ productInfo.longDesc }}
             .price Цена: 
               span.num
@@ -18,7 +18,10 @@
             .buttons
               a.button(@click='addToCart') В корзину
               change-amount(:amount="amount")
-            .hint Условия доставки обсуждаются индивидуально
+            .hint 
+              | Условия доставки обсуждаются индивидуально
+              br
+              | Возможна оплата при получении в любом отделении ТК CDEK 
         
         .chars
           .bar(@click='toggleBar')
@@ -66,7 +69,14 @@ export default {
   },
   head() {
     return {
-      title: `${this.productInfo.title} – Classic Horse Nutrition`
+      title: `${this.productInfo.title} – Classic Horse Nutrition`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: `${this.productInfo.longDesc}`
+        }
+      ]
     }
   },
   data() {

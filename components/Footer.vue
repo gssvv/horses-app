@@ -2,8 +2,10 @@
   .footer
     .container
       .content
-        .item Designed by 
-          a(href='http://alex-card.ru' target="_blank") Alexander Gusev
+        .item
+          nuxt-link(to='/korotko-o-produkcii') Коротко о продукции
+          br
+          nuxt-link(to='/chto-my-predlagaem') Что мы предлагаем
 
         .item 
           a(@click="togglePolicy()") Classic Horse Nutrition © {{ currentYear }}
