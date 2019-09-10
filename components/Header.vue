@@ -43,10 +43,10 @@ export default {
           title: 'Каталог',
           href: '/catalogue'
         },
-        // {
-        //   title: 'Где купить?',
-        //   href: '/contacts'
-        // },
+        {
+          title: 'Где купить?',
+          href: '/gde-kupit'
+        },
         {
           title: 'Контакы',
           href: '/contacts'
@@ -203,7 +203,7 @@ export default {
       .wrapper
         right: 0
 
-  @include respond-to(lg)
+  @include respond-to(xl)
     .container
       .content
         .menu
