@@ -44,7 +44,7 @@ export default {
           href: '/catalogue'
         },
         {
-          title: 'Где купить?',
+          title: 'Где купить',
           href: '/gde-kupit'
         },
         {

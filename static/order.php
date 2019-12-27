@@ -5,6 +5,8 @@ $summ = $_POST['summ'];
 $customerInfoInline = $_POST['info'];
 $customerName = $_POST['name'];
 $customerPhone = $_POST['phone'];
+$customerArea = $_POST['area'];
+$customerPassport = $_POST['passport'];
 
 print($customerInfoInline);
 
@@ -36,6 +38,7 @@ foreach($customerInfoArr as $tr) {
 $subject = 'Уведомление о заказе';
 
 $adminEmail = "classichorse@yandex.ru";
+// $adminEmail = "the.alex.dev@yandex.ru";
 
 $headers  = 'MIME-Version: 1.0' . "\r\n";
 $headers .= "Content-type: text/html; charset=utf-8 \r\n";
@@ -150,6 +153,11 @@ $formcontentCustomer = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                     </td>
                   </tr>
                   </table>
+
+                  <p style="margin: 0;padding: 0;font-size: 16px;font-family: \'Avenir Next\', &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;line-height: 1.65;font-weight: normal;margin-bottom: 20px;">
+                    Населенный пункт: '.$customerArea.' </br>
+                    Серия и номер паспорта: '.$customerPassport.'
+                  </p>
   
                   <p
                     style=\'margin: 0;padding: 0;font-size: 16px;font-family: &apos;Avenir Next&apos;, "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;line-height: 1.65;font-weight: normal;margin-bottom: 20px;\'
@@ -382,6 +390,11 @@ $formcontentAdmin = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "h
                     </td>
                   </tr>
                   </table>
+
+                  <p style="margin: 0;padding: 0;font-size: 16px;font-family: \'Avenir Next\', &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;line-height: 1.65;font-weight: normal;margin-bottom: 20px;">
+                    Населенный пункт: '.$customerArea.' </br>
+                    Серия и номер паспорта: '.$customerPassport.'
+                  </p>
   
                   <p style="margin: 0;padding: 0;font-size: 16px;font-family: \'Avenir Next\', &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;line-height: 1.65;font-weight: normal;margin-bottom: 20px;">
                     Письмо с информацией об оплате отправлено покупателю. Теперь

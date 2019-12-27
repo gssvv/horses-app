@@ -47,12 +47,21 @@
               .error {{ userForm.name.alert }}
             .field
               .tip Номер телефона:
-              masked-input(mask="\+1 (111) 111-11-11" class='input' name='phone'   v-model='userForm.phone.value' placeholder='+7 (900) 000-00-00')
+              masked-input(mask="\+1 (111) 111-11-11" class='input' name='phone' v-model='userForm.phone.value' placeholder='+7 (900) 000-00-00')
               .error {{ userForm.phone.alert }}
             .field
               .tip Email:
               input.input(type='text' name='email' v-model='userForm.email.value' placeholder='customer@example.com')
               .error {{ userForm.email.alert }}
+            .field
+              .tip Населенный пункт:
+              input.input(type='text' name='area' v-model='userForm.area.value' placeholder='г. Москва')
+              .error {{ userForm.area.alert }}
+            .field
+              .tip Серия и номер паспорта:
+              masked-input(mask="1111 111111" class='input' name='passport' v-model='userForm.passport.value' placeholder='0000 000000')
+              .error {{ userForm.passport.alert }}
+
             .field
               .tip Оплата:
               p.radio
@@ -80,6 +89,8 @@
                 input(name='Shp_name' v-model='userForm.name.value')
                 textarea(name='Shp_info' :value='productInfo')
                 input(name='Shp_phone' v-model='userForm.phone.value')
+                input(name='Shp_passport' v-model='userForm.passport.value')
+                input(name='Shp_area' v-model='userForm.area.value')
 
 
               .button.big(@click='order()') Заказать
@@ -126,6 +137,16 @@ export default {
           alert: '',
           required: true
         },
+        area: {
+          value: '',
+          alert: '',
+          required: true
+        },
+        passport: {
+          value: '',
+          alert: '',
+          required: true
+        },
         email: {
           value: '',
           alert: '',
@@ -133,7 +154,7 @@ export default {
           regExp: /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/i
         },
         payment: {
-          value: 'online',
+          value: 'receipt',
           alert: '',
           required: true
         }
@@ -233,6 +254,8 @@ export default {
       bodyFormData.set('email', this.userForm.email.value)
       bodyFormData.set('name', this.userForm.name.value)
       bodyFormData.set('phone', this.userForm.phone.value)
+      bodyFormData.set('area', this.userForm.area.value)
+      bodyFormData.set('passport', this.userForm.passport.value)
 
       axios({
         method: 'post',
@@ -257,6 +280,8 @@ export default {
       bodyFormData.set('email', this.userForm.email.value)
       bodyFormData.set('name', this.userForm.name.value)
       bodyFormData.set('phone', this.userForm.phone.value)
+      bodyFormData.set('area', this.userForm.area.value)
+      bodyFormData.set('passport', this.userForm.passport.value)
 
       axios({
         method: 'post',
@@ -278,6 +303,8 @@ export default {
       }
 
       this.finalPrice = result
+
+      // uncomment for test payments
       // this.finalPrice = 1
     },
     getItems() {

@@ -31,6 +31,8 @@ $shp_email = $_POST['email'];
 $shp_info = $_POST['info'];
 $shp_name = $_POST['name'];
 $shp_phone = $_POST['phone'];
+$shp_area = $_POST['area'];
+$shp_passport = $_POST['passport'];
 
 // предлагаемая валюта платежа
 // default payment e-currency
@@ -42,7 +44,7 @@ $culture = "ru";
 
 // формирование подписи
 // generate signature
-$crc  = md5("$mrh_login:$out_summ:$inv_id:$mrh_pass1:Shp_email=$shp_email:Shp_info=$shp_info:Shp_name=$shp_name:Shp_phone=$shp_phone");
+$crc  = md5("$mrh_login:$out_summ:$inv_id:$mrh_pass1:Shp_area=$shp_area:Shp_email=$shp_email:Shp_info=$shp_info:Shp_name=$shp_name:Shp_passport=$shp_passport:Shp_phone=$shp_phone");
 
 print $crc;
 // форма оплаты товара

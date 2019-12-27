@@ -23,6 +23,8 @@
             
           p: strong Вы можете приобрести товар у нас на сайте и других магазинах.
 
+          p: a(href='/samovolov.pdf' target='_blank').button Из практики профессионала
+
         .stats
           .item
             .num 5 лет

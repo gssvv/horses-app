@@ -12,11 +12,11 @@
             p(v-for='address in dealer.addresses' v-text='address').dealer__address
             p(v-if='dealer.phones.length').dealer__phones
               span(v-for='(phone, index) in dealer.phones' :key='index')
-                a(:href="`tel:${phone}`" v-text='phone' target='_blank')
+                a(:href="`tel:${phone}`" v-text='phone' target='_blank' rel='nofollow')
                 span(v-if='index + 1 != dealer.phones.length' v-text="`, `")
-            p(v-if='dealer.site').dealer__site: a(:href='dealer.site' v-text='dealer.site' target='_blank')
+            p(v-if='dealer.site').dealer__site: a(:href='dealer.site' v-text='dealer.site' target='_blank' rel='nofollow')
             .dealer__socials
-              a(:href='link' v-for='(link, index) in dealer.socials' target='_blank'): i(:class='`fab fa-${index}`') 
+              a(:href='link' v-for='(link, index) in dealer.socials' target='_blank' rel='nofollow'): i(:class='`fab fa-${index}`') 
 
         
 </template>
@@ -52,10 +52,10 @@ export default {
         },
         {
           name: 'Сеть магазинов «Конкур»',
-          town: 'Воронеж',
+          town: 'Краснодар',
           addresses: [
             'Краснодарский край, г Краснодар. Ул.Суворова, 74/1',
-            'Ул.Беговая, 11 Ипподром'
+            'Ул.Беговая, 11, Ипподром'
           ],
           site: 'https://www.magkonkur.ru/',
           phones: ['+7 (918) 31-331-28', '+7 (918) 45-89-414']
@@ -75,7 +75,7 @@ export default {
           name: 'Сеть магазинов «Конкур»',
           town: 'Ростов-на-Дону',
           addresses: [
-            'Ростовская область, г. Ростов на Дону, Ул.Малюгинойб, 233 Ипподром'
+            'Ростовская область, г. Ростов-на-Дону, Ул.Малюгиной, 233, Ипподром'
           ],
           site: 'https://www.magkonkur.ru/',
           phones: ['+7 (918) 31-331-28', '+7 (903) 43-85-939']
@@ -93,7 +93,7 @@ export default {
           name: 'Crazy Horse , Рахимзанова Наталья Петровна',
           town: 'Ульяновск',
           addresses: [
-            'Ульяновская лбл., г Ульяновск., Ул.Лесная 11 или пос. Мирный, ул. Южная'
+            'Ульяновская обл., г Ульяновск., Ул.Лесная 11 или пос. Мирный, ул. Южная'
           ],
           socials: {
             vk: 'https://vk.com/crazyhorseshop'
@@ -121,7 +121,7 @@ export default {
         {
           name: 'Магазин на Беговой, ИП Пущин В.И.',
           town: 'Москва',
-          addresses: ['г. Москва, Улица Беговая, 22'],
+          addresses: ['г. Москва, Улица Беговая, 22б, Ипподром'],
           phones: ['+7 (968) 608-54-45, +7 (903) 565-69-09']
         },
         {
