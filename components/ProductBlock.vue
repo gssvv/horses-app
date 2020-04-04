@@ -6,11 +6,11 @@
     .info
       .price Цена: 
         span.num {{ price }} р.
-      .hint {{ price*box }}р. за коробку ({{ box }}шт.)
+      .hint(v-text="getHint(price, box)")
       .description {{ desc }}
     .buttons
       nuxt-link.button(:to='{path: `/product`, query: { id }}') Подробнее
-      a.button.add-to-cart(@click="addToCart"): i.fas.fa-cart-plus
+      a.button.add-to-cart(@click="addToCart" v-if="!contactOnly"): i.fas.fa-cart-plus
 
 </template>
 
@@ -22,12 +22,22 @@ export default {
     desc: String,
     price: Number,
     box: Number,
-    spec: Boolean
+    options: Array,
+    contactOnly: Boolean
   },
   data() {
     return {}
   },
   methods: {
+    getHint() {
+      if (this.options) {
+        let firstOption = this.options[0]
+        return `${firstOption.price}р. за ${firstOption.name}`
+      }
+
+      let total = this.price * this.box
+      return `${total}р. за коробку (${this.box}шт.)`
+    },
     addToCart() {
       this.$store.dispatch('addProduct', { id: this.id, amount: 1 })
 
@@ -48,7 +58,6 @@ export default {
   }
 }
 </script>
-
 
 <style lang="sass" scoped>
 @import '@/assets/style/variables.sass'
@@ -101,8 +110,4 @@ export default {
       font-size: 14px
       margin-top: 10px
       margin-bottom: 15px
-    
-
-
 </style>
-

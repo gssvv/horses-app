@@ -23,7 +23,7 @@
             a.item(href="https://www.instagram.com/classic.horse.nutrition" target="_blank"): i.fab.fa-instagram
             a.item(href="https://ok.ru/profile/574397461583" target="_blank"): i.fab.fa-odnoklassniki
 
-        .form-wrapper
+        .form-wrapper(ref="form")
           h2.title Предварительный заказ
           form.form
             .field
@@ -81,6 +81,26 @@ export default {
         }
       },
       result: ''
+    }
+  },
+  mounted() {
+    if (this.$route.query.scroll == 'contacts') {
+      const { form } = this.$refs
+      let top = form.offsetParent.offsetTop + form.offsetTop
+
+      window.scrollTo({
+        top,
+        left: 0,
+        behavior: 'smooth'
+      })
+
+      this.form.message
+    }
+
+    const { product } = this.$route.query
+
+    if (product) {
+      this.form.message.value = `Здравствуйте. Меня интересует продукт ${product}...`
     }
   },
   methods: {
@@ -174,7 +194,7 @@ export default {
             justify-content: center
             align-items: center
             img
-              width: 200px 
+              width: 200px
               max-width: 90%
           .phone-n-mail
             display: grid
@@ -219,7 +239,7 @@ export default {
           .form
             margin: auto
             max-width: 370px
-            padding: 20px 0 
+            padding: 20px 0
             width: 100%
             display: grid
             justify-items: flex-end
@@ -245,7 +265,7 @@ export default {
                 &:focus
                   outline: none
               .error
-                font-size: 13px 
+                font-size: 13px
                 color: #DC4C40
                 margin: 2px 0 0 0
             .announce
@@ -279,5 +299,4 @@ export default {
               grid-column: span 2
           .form-wrapper
             padding: 20px
-
 </style>

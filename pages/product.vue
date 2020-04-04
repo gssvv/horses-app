@@ -3,21 +3,27 @@
     .container
       .content(v-if='productInfo')
         .review
-          .images
-            .item(v-for="i in 3" :key='i'): img(:src='require(`@/assets/img/products/${productInfo.id}-${i}.jpg`)' :alt='productInfo.title')
+          .images(:class="{single: productInfo.group !== 1}")
+            .item(v-for="i in productInfo.group == 1 ? 3 : 1" :key='i'): img(v-if="productInfo.id" :src='require(`@/assets/img/products/${productInfo.id}-${i}.jpg`)' :alt='productInfo.title')
 
-            .item.large: img(src='@/assets/img/products/box.jpg' :alt='productInfo.title')
+            .item.large(v-if="productInfo.group == 1"): img(src='@/assets/img/products/box.jpg' :alt='productInfo.title')
           .info
             h1.title {{ productInfo.title }}
             p.desc {{ productInfo.longDesc }}
             .price Цена: 
               span.num
-                span.int {{ productInfo.box * productInfo.price * amount }}
-                | р.
-            .hint За коробку {{ productInfo.box }}шт.
-            .buttons
+                span.int(v-text="price")
+
+            .hint(v-text="optionSelected.text || `За коробку ${productInfo.box }шт.`")
+            .select(v-if="productInfo.options")
+              v-select(:options="getOptions(productInfo.options)" v-model="optionSelected")
+            
+            .buttons(v-if="optionSelected.price !== 0 && !productInfo.contactOnly")
               a.button(@click='addToCart') В корзину
               change-amount(:amount="amount")
+            .buttons(v-else)
+              nuxt-link.button(:to="{name: 'index', query: {scroll: 'contacts', product: productInfo.title}}") Задать вопрос
+              
             .hint 
               | Условия доставки обсуждаются индивидуально
               br
@@ -25,11 +31,11 @@
         
         .chars
           .bar(@click='toggleBar')
-            .item(:class="{active: activeSec == 'comp'}", id='comp') Компоненты
-            .item(:class="{active: activeSec == 'ing'}", id='ing') Ингредиенты
-            .item(:class="{active: activeSec == 'note'}", id='note') Примечание
-            .item(:class="{active: activeSec == 'rec'}", id='rec') Рекомендации по кормлению
-            a.item(:href='getPDF(productInfo.title)' target='_blank' download).pdf Скачать в PDF-формате
+            .item(:class="{active: activeSec == 'comp'}", v-if="productInfo.components" id='comp') Компоненты
+            .item(:class="{active: activeSec == 'ing'}", v-if="productInfo.ingredients" id='ing') Ингредиенты
+            .item(:class="{active: activeSec == 'note'}", v-if="productInfo.notice" id='note') Примечание
+            .item(:class="{active: activeSec == 'rec'}", v-if="productInfo.recommendations"  id='rec') Рекомендации по кормлению
+            a.item(:href='getPDF(productInfo.title)' target='_blank' download v-if="productInfo.group == 1").pdf Скачать в PDF-формате
           .chars-content
             transition(name="fade" mode="out-in" :duration="200")
               .components(v-if="activeSec == 'comp'" key='comp')
@@ -55,6 +61,8 @@
 
 <script>
 import ChangeAmount from '@/components/ChangeAmount'
+import VSelect from '@/components/Select'
+
 export default {
   head: {
     title: 'Продукт – Classic Horse Nutrition',
@@ -81,21 +89,44 @@ export default {
   },
   data() {
     return {
+      optionSelected: {},
       activeSec: 'comp',
       amount: 1,
       id: null,
       productInfo: {}
     }
   },
-  created() {
+  async created() {
     this.$on('changeAmount', value => (this.amount = value))
 
     this.id = this.$route.query ? this.$route.query.id : null
-    this.productInfo = require('@/assets/ProductsData.js')[this.id]
+    this.productInfo = await import('@/assets/productsData.js')
+
+    this.productInfo = await this.productInfo.default[this.id]
 
     if (!this.productInfo) this.$router.push('/catalogue')
+
+    this.activeSec = this.productInfo.components ? 'comp' : 'ing'
+
+    this.initOptions()
+  },
+  computed: {
+    price() {
+      if (this.optionSelected.price === 0) return 'договорная'
+
+      let price =
+        this.productInfo.box *
+        this.amount *
+        (this.optionSelected.price || this.productInfo.price)
+      return price + 'р.'
+    }
   },
   methods: {
+    async initOptions() {
+      await this.$nextTick
+      if (this.productInfo.options)
+        this.optionSelected = this.getOptions(this.productInfo.options)[0]
+    },
     getPDF(title) {
       return (
         '/pdf/' +
@@ -106,11 +137,26 @@ export default {
         '.pdf'
       )
     },
+    getOptions(options) {
+      return options.map(el => ({
+        text: el.name,
+        value: el.id,
+        price: el.price
+      }))
+    },
     toggleBar(e) {
       if (e.srcElement.id) this.activeSec = e.srcElement.id
     },
     addToCart() {
-      this.$store.dispatch('addProduct', { id: this.id, amount: this.amount })
+      let id = this.optionSelected.value
+        ? `${this.id}–${this.optionSelected.value}`
+        : this.id
+
+      this.$store.dispatch('addProduct', {
+        id: id,
+        amount: this.amount,
+        option: this.optionSelected.id || 0
+      })
 
       this.$toasted.show(`Добавлено в корзину (${this.amount})`, {
         theme: 'toasted-primary',
@@ -127,7 +173,7 @@ export default {
       })
     }
   },
-  components: { ChangeAmount }
+  components: { ChangeAmount, VSelect }
 }
 </script>
 
@@ -158,6 +204,9 @@ export default {
           grid-template-columns: 1fr 1fr 1fr
           grid-template-rows: 1fr auto
           grid-gap: 5px
+          &.single
+            grid-template-columns: 1fr
+            grid-template-rows: 1fr
           .item
             img
               width: 100%
@@ -178,9 +227,9 @@ export default {
             line-height: 1.1
           .desc
             margin: 0
-            font-size: 16px 
+            font-size: 16px
             font-weight: 500
-          .price 
+          .price
             margin: 15px 0 0 0
             font-size: 34px
             font-weight: 700
@@ -189,6 +238,9 @@ export default {
           .hint
             color: #999
             font-size: 13px
+          .select
+            max-width: 280px
+            margin: 20px 0 0 0
           .buttons
             margin: 25px 0 5px 0
             display: grid
@@ -201,7 +253,7 @@ export default {
               margin: 0
               padding: 7.5px 35px
       .chars
-        padding: 30px 0 0 0 
+        padding: 30px 0 0 0
         .bar
           display: inline-flex
           flex-wrap: wrap
@@ -309,7 +361,7 @@ export default {
                 grid-gap: 10px 30px
 
   @include respond-to(md)
-    padding: 15px 0 
+    padding: 15px 0
     .container
       .content
         padding: 30px 50px
@@ -339,7 +391,7 @@ export default {
                 padding-left: 20px
                 grid-template-columns: 1fr 1fr
 
-        
+
 
   @include respond-to(sm)
     .container
@@ -352,7 +404,7 @@ export default {
             .buttons
               .button
                 font-size: 20px
-                padding: 7.5px 20px  
+                padding: 7.5px 20px
               .change-amount
                 font-size: 18px
                 .num
@@ -363,8 +415,4 @@ export default {
         .notice
           p
             font-size: 1rem
-
-
-
-
 </style>
