@@ -4,7 +4,6 @@ export default [
     title: 'Lacto ENZYME',
     desc:
       'Комплексная, пробиотическая добавка для активизации и нормализации процессов пищеварения и деятельности ЖКТ у лошадей. ',
-    // price: 39,
     price: 35,
     box: 30,
     group: 1
@@ -41,8 +40,8 @@ export default [
     title: 'DOCTORHOOF Concentrate',
     desc:
       'Многокомпонентный моюще-дезинфицирующий концентрат для обработки копыт крупного и мелкого рогатого скота',
-    price: 35,
-    box: 30,
+    price: 950,
+    box: 1,
     group: 2,
     contactOnly: true
   },
@@ -51,8 +50,8 @@ export default [
     title: 'DERMALACTIS Hgs Сlassic',
     desc:
       'Готовое гигиеническое средство для обработки сосков вымени перед доением с обеззараживающим эффектом за счет действия хлоргексидина биглюконата',
-    price: 35,
-    box: 30,
+    price: 700,
+    box: 1,
     group: 2,
     contactOnly: true
   },
@@ -61,8 +60,8 @@ export default [
     title: 'DERMALACTIS Hgs Dip',
     desc:
       'Специальное гигиеническое средство для обработки сосков вымени после доения с обеззараживающим эффектом за счет хлоргексидина биглюконата',
-    price: 35,
-    box: 30,
+    price: 750,
+    box: 1,
     group: 2,
     contactOnly: true
   },
@@ -71,8 +70,8 @@ export default [
     title: 'DERMALACTIS Iodine Сlassic',
     desc:
       'Готовое гигиеническое средство для обработки сосков вымени перед доением с обеззараживающим эффектом активного йода',
-    price: 35,
-    box: 30,
+    price: 850,
+    box: 1,
     group: 2,
     contactOnly: true
   },
@@ -81,8 +80,8 @@ export default [
     title: 'DERMALACTIS Iodine Dip',
     desc:
       'Cпециальное гигиеническое средство для обработки сосков вымени после доения с обеззараживающим эффектом за счет активного йода',
-    price: 35,
-    box: 30,
+    price: 900,
+    box: 1,
     group: 2,
     contactOnly: true
   },
@@ -91,8 +90,8 @@ export default [
     title: 'DERMALACTIS Lactic acid - Automatic',
     desc:
       'Готовое гигиеническое средство для обработки сосков вымени до и после доения с обеззараживающим эффектом на основе молочной кислоты',
-    price: 35,
-    box: 30,
+    price: 2380,
+    box: 1,
     group: 2,
     contactOnly: true
   },
@@ -100,8 +99,8 @@ export default [
     id: 11,
     title: 'CRISTALDRY Active Acid',
     desc: 'Кислотное моющее средство на основе смеси минеральных кислот',
-    price: 35,
-    box: 30,
+    price: 1700,
+    box: 1,
     group: 2,
     contactOnly: true
   },
@@ -109,8 +108,8 @@ export default [
     id: 12,
     title: 'CRISTALDRY Active Alkali',
     desc: 'Щелочное моющее и дезинфицирующее средство с активным хлором',
-    price: 35,
-    box: 30,
+    price: 1700,
+    box: 1,
     group: 2,
     contactOnly: true
   },
@@ -119,27 +118,26 @@ export default [
     title: 'CRISTALDRY Universal Active Alkali',
     desc:
       'Концентрированное жидкое щелочное высокопенное средство для комплексной санитарной мойки различных поверхностей (нержавеющая сталь, керамика, стеклоэмаль, пластмассы)',
-    price: 35,
-    box: 30,
+    price: 750,
+    box: 1,
     group: 2,
     contactOnly: true
   },
   {
     id: 14,
-    title: 'Стоп Диар',
+    title: 'СТОПДИАР',
     desc:
       'Профилактическая кормовая добавка. Не является лекарственным средством. Только для телят.',
-    price: 35,
+    price: 80,
     box: 30,
     group: 3
   },
   {
     id: 15,
     title: 'Энерджи Дринк',
-    desc:
-      'Профилактическая кормовая добавка для приготовления энергетического напитка новотельным коровам',
-    price: 35,
-    box: 30,
+    desc: 'Электролитно-энергетический напиток для новотельных коров.',
+    price: 350,
+    box: 1,
     group: 3
   }
 ]

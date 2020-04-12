@@ -5,8 +5,8 @@
       .content
         h1.title 
           | Швейцарские добавки 
-          span.dif для лошадей
-        h2.sign Качественные и эффективные кормовые добавки для лошадей
+          span.dif для лошадей, КРС, МРС
+        h2.sign Качественные кормовые добавки для с/х животных, гигиена вымени и профилактика копытных заболеваний
         .buttons-wrapper
           nuxt-link.button.big.non-trans(to="catalogue") Каталог
           a.button.big.white(href="#about") Подробнее
@@ -53,9 +53,11 @@ export default {
         margin: 0
         line-height: 1.1
       .sign
-        font-size: 26px
-        font-weight: 600
-        margin: 0
+        font-size: 22px
+        font-weight: 400
+        max-width: 600px
+        margin: 12px 0 32px 0
+        color: #ddd
         line-height: 1.1
       .buttons-wrapper
         grid-gap: 5px 20px
@@ -99,8 +101,4 @@ export default {
           font-size: 18px
         .buttons-wrapper
           grid-auto-flow: row
-        
-
-
-
 </style>

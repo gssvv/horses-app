@@ -1,30 +1,28 @@
 <template lang="pug">
   .catalogue
     .container
-      .content.title
-        h3.subtitle Для лошадей
-        h1.title Кормовые добавки для лошадей
-      .content.wrapper
-        product-block(v-for="item in blocks.filter(e => e.group == 1)" :key="item.id" v-bind="item")
-      .content.title
-        h3.subtitle Для коров   
-        h1.title Средства гигиены вымени и копыт
-      .content.wrapper
-        product-block(v-for="item in blocks.filter(e => e.group == 2)" :key="item.id" v-bind="item")
-      .content.title
-        h3.subtitle Для коров
-        h1.title Кормовые добавки для коров
-      .content.wrapper
-        product-block(v-for="item in blocks.filter(e => e.group == 3)" :key="item.id" v-bind="item")
+      template(v-if="!groupId")
+        .content.title
+          h1.title Каталог
+        .content.wrapper
+          group-block(v-for="item in groups" :key="item.id" v-bind="item")
+          
+      template(v-else)
+        .content.title
+          h1.title(v-text="groups[groupId].title")
+        .content.wrapper
+          product-block(v-for="item in blocks.filter(e => e.group == groups[groupId].num)" :key="item.id" v-bind="item")
 
-      .content.info
-        | <b class='imp'>Важно!</b> При вскрытии иной упаковки с подкормкой для лошадей содержащиеся в ней витамины, макро, микроэлементы и другие питательные вещества подвергаются прогорганию, окислению и разрушению под воздействием света, кислорода, температуры. <b>Classic Horse Nutrition</b> предлагает использовать в кормлении <b>запатентованную серию добавок для лошадей Super Mix и Lacto Enzyme</b>, защищённых современной <b>порционной упаковкой</b>, рассчитанной на непосредственное вскрытие и введение добавки к существующему рациону. Это позволяет сохранять качество продукта длительное время и получать максимальный эффект от его применения.
+        .content.info
+          | <b class='imp'>Важно!</b> При вскрытии иной упаковки с подкормкой для лошадей содержащиеся в ней витамины, макро, микроэлементы и другие питательные вещества подвергаются прогорганию, окислению и разрушению под воздействием света, кислорода, температуры. <b>Classic Horse Nutrition</b> предлагает использовать в кормлении <b>запатентованную серию добавок для лошадей Super Mix и Lacto Enzyme</b>, защищённых современной <b>порционной упаковкой</b>, рассчитанной на непосредственное вскрытие и введение добавки к существующему рациону. Это позволяет сохранять качество продукта длительное время и получать максимальный эффект от его применения.
 
 </template>
 
 <script>
 import ProductBlock from '@/components/ProductBlock'
+import GroupBlock from '@/components/GroupBlock'
 import productsData from '@/assets/productsData'
+import groups from '@/assets/groups'
 
 export default {
   head() {
@@ -34,11 +32,20 @@ export default {
   },
   data() {
     return {
-      blocks: Object.values(productsData)
+      blocks: Object.values(productsData),
+      groups: groups
     }
   },
+  computed: {
+    groupId() {
+      const { group } = this.$route.query
+      return group
+    }
+  },
+  created() {},
   components: {
-    ProductBlock
+    ProductBlock,
+    GroupBlock
   }
 }
 </script>

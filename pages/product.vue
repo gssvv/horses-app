@@ -22,12 +22,13 @@
               a.button(@click='addToCart') В корзину
               change-amount(:amount="amount")
             .buttons(v-else)
-              nuxt-link.button(:to="{name: 'index', query: {scroll: 'contacts', product: productInfo.title}}") Задать вопрос
+              nuxt-link.button(:to="{name: 'index', query: {scroll: 'contacts', product: productInfo.title}}") Предварительный заказ
               
             .hint 
-              | Условия доставки обсуждаются индивидуально
+              span Условия доставки обсуждаются индивидуально
               br
-              | Возможна оплата при получении в любом отделении ТК CDEK 
+              span(v-if="productInfo.group == 1") Возможна оплата при получении в любом отделении ТК CDEK 
+              span(v-if="productInfo.group == 2") РОЗНИЦА – 8 (900) 296-99-90; 8 (918) 111-24-53
         
         .chars
           .bar(@click='toggleBar')
@@ -35,7 +36,7 @@
             .item(:class="{active: activeSec == 'ing'}", v-if="productInfo.ingredients" id='ing') Ингредиенты
             .item(:class="{active: activeSec == 'note'}", v-if="productInfo.notice" id='note') Примечание
             .item(:class="{active: activeSec == 'rec'}", v-if="productInfo.recommendations"  id='rec') Рекомендации по кормлению
-            a.item(:href='getPDF(productInfo.title)' target='_blank' download v-if="productInfo.group == 1").pdf Скачать в PDF-формате
+            a.item(:href='getPDF(productInfo.pdf)' target='_blank' download v-if="productInfo.pdf").pdf Скачать в PDF-формате
           .chars-content
             transition(name="fade" mode="out-in" :duration="200")
               .components(v-if="activeSec == 'comp'" key='comp')
@@ -128,14 +129,7 @@ export default {
         this.optionSelected = this.getOptions(this.productInfo.options)[0]
     },
     getPDF(title) {
-      return (
-        '/pdf/' +
-        title
-          .toLowerCase()
-          .split(' ')
-          .join('-') +
-        '.pdf'
-      )
+      return '/pdf/' + title + '.pdf'
     },
     getOptions(options) {
       return options.map(el => ({
@@ -237,7 +231,7 @@ export default {
               color: $primary
           .hint
             color: #999
-            font-size: 13px
+            font-size: 14px
           .select
             max-width: 280px
             margin: 20px 0 0 0

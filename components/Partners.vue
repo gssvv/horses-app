@@ -15,13 +15,13 @@ export default {
   data() {
     return {
       links: [
-        'http://1k-horse.com',
+        'https://protectfeed.ru',
         'http://www.kirovhorse.ru',
         'http://www.samovolov.ru',
         'http://malkastud.ru',
         'http://www.terskarabian.com/ru',
-        'http://konezavod.ru',
-        'http://www.khip.ru'
+        'http://www.khip.ru',
+        'http://konezavod.ru'
       ]
     }
   }
@@ -32,7 +32,7 @@ export default {
 @import '@/assets/style/variables.sass'
 
 .partners
-  padding: 30px 0 30px 0 
+  padding: 30px 0 30px 0
   .container
     .content
       .section-title
@@ -60,16 +60,11 @@ export default {
             opacity: .8
           img
             width: 100%
-        
+
   @include respond-to(sm)
     .container
-      .content 
+      .content
         &.par-wrapper
           .item
             width: 130px
-          
-
-
-
-
 </style>
