@@ -83,7 +83,8 @@ export default {
       result: ''
     }
   },
-  mounted() {
+  async mounted() {
+    await this.$nextTick
     if (this.$route.query.scroll == 'contacts') {
       const { form } = this.$refs
       let top = form.offsetParent.offsetTop + form.offsetTop

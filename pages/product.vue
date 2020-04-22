@@ -14,7 +14,7 @@
               span.num
                 span.int(v-text="price")
 
-            .hint(v-text="optionSelected.text || `За коробку ${productInfo.box }шт.`")
+            .hint(v-text="optionSelected.text || hint")
             .select(v-if="productInfo.options")
               v-select(:options="getOptions(productInfo.options)" v-model="optionSelected")
             
@@ -27,7 +27,7 @@
             .hint 
               span Условия доставки обсуждаются индивидуально
               br
-              span(v-if="productInfo.group == 1") Возможна оплата при получении в любом отделении ТК CDEK 
+              span(v-if="productInfo.group == 1 || productInfo.group == 3") Возможна оплата при получении в любом отделении ТК CDEK 
               span(v-if="productInfo.group == 2") РОЗНИЦА – 8 (900) 296-99-90; 8 (918) 111-24-53
         
         .chars
@@ -35,7 +35,7 @@
             .item(:class="{active: activeSec == 'comp'}", v-if="productInfo.components" id='comp') Компоненты
             .item(:class="{active: activeSec == 'ing'}", v-if="productInfo.ingredients" id='ing') Ингредиенты
             .item(:class="{active: activeSec == 'note'}", v-if="productInfo.notice" id='note') Примечание
-            .item(:class="{active: activeSec == 'rec'}", v-if="productInfo.recommendations"  id='rec') Рекомендации по кормлению
+            .item(:class="{active: activeSec == 'rec'}", v-if="productInfo.recommendations"  id='rec') Рекомендации
             a.item(:href='getPDF(productInfo.pdf)' target='_blank' download v-if="productInfo.pdf").pdf Скачать в PDF-формате
           .chars-content
             transition(name="fade" mode="out-in" :duration="200")
@@ -112,6 +112,12 @@ export default {
     this.initOptions()
   },
   computed: {
+    hint() {
+      const container = this.productInfo.container || 'коробку'
+      const unit = this.productInfo.unit || 'шт.'
+
+      return `За ${container} ${this.productInfo.box}${unit}`
+    },
     price() {
       if (this.optionSelected.price === 0) return 'договорная'
 
@@ -230,7 +236,7 @@ export default {
             .num
               color: $primary
           .hint
-            color: #999
+            color: #222
             font-size: 14px
           .select
             max-width: 280px

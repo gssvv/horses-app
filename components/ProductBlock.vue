@@ -23,7 +23,9 @@ export default {
     price: Number,
     box: Number,
     options: Array,
-    contactOnly: Boolean
+    contactOnly: Boolean,
+    unit: String,
+    container: String
   },
   data() {
     return {}
@@ -35,8 +37,11 @@ export default {
         return `${firstOption.price}р. за ${firstOption.name}`
       }
 
+      const container = this.container || 'коробку'
+      const unit = this.unit || 'шт.'
+
       let total = this.price * this.box
-      return `${total}р. за коробку (${this.box}шт.)`
+      return `${total}р. за ${container} (${this.box}${unit})`
     },
     addToCart() {
       this.$store.dispatch('addProduct', { id: this.id, amount: 1 })
