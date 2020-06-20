@@ -10,7 +10,7 @@
 
             p.desc Заказ <span class='green' v-if='finalInfo.id'>№{{ finalInfo.id }}</span> успешно начат. На указанную вами почту <span class='green'>{{ finalInfo.email }}</span> было отправлено уведомление с информацией о заказе (письмо может по ошибке попасть в папку СПАМ). 
             p.desc(v-if='finalInfo.id') Также, в ходе транзакции на указанные вами контактные данные был отправлен <span class='green'>электронный чек</span> – настоятельно рекомендуем сохранить его.
-            p.desc Если у вас возникли проблемы с заказом или есть другие вопросы – обратитесь к нам по телефону <a href='tel:+7 (928) 332-22-29'>+7 (928) 332-22-29</a> или по почте <a href='classichorse@yandex.ru'>classichorse@yandex.ru</a>
+            p.desc Если у вас возникли проблемы с заказом или есть другие вопросы – обратитесь к нам по телефону <a href='tel:+7 (928) 332-22-29'>+7 (928) 332-22-29</a> или по почте <a href='info@korma-anilyn.ru'>info@korma-anilyn.ru</a>
 
             nuxt-link(to='/').button.big На главную
 
@@ -20,7 +20,7 @@
 
             h1.title Ошибка
 
-            p.desc При обработке заказа возникла ошибка. Попробуйте позже, либо обратитесь к нам по телефону <a href='tel:+7 (928) 332-22-29'>+7 (928) 332-22-29</a> или по почте <a href='classichorse@yandex.ru'>classichorse@yandex.ru</a>
+            p.desc При обработке заказа возникла ошибка. Попробуйте позже, либо обратитесь к нам по телефону <a href='tel:+7 (928) 332-22-29'>+7 (928) 332-22-29</a> или по почте <a href='info@korma-anilyn.ru'>info@korma-anilyn.ru</a>
 
             nuxt-link(to='/').button.big На главную
 
@@ -365,7 +365,7 @@ export default {
         text-transform: uppercase
         margin: 0
       .note
-        font-size: 14px 
+        font-size: 14px
         font-weight: 600
         margin: 0
         .price
@@ -427,7 +427,7 @@ export default {
             &:focus
               outline: none
           .error
-            font-size: 13px 
+            font-size: 13px
             color: #DC4C40
             margin: 2px 0 0 0
       .result
@@ -449,7 +449,7 @@ export default {
               color: $primary
         .tip
           margin-top: 10px
-          font-size: 14px 
+          font-size: 14px
           color: #999
 
   @include respond-to(sm)
@@ -463,8 +463,4 @@ export default {
             justify-content: center
             .price
               order: -1
-          
-
-
-  
 </style>

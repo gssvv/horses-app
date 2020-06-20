@@ -37,12 +37,13 @@ foreach($customerInfoArr as $tr) {
 
 $subject = 'Уведомление о заказе';
 
-$adminEmail = "classichorse@yandex.ru";
+$adminEmail = "info@korma-anilyn.ru";
+$adminEmailCopy = "yuriy_p@korma-anilyn.ru";
 // $adminEmail = "the.alex.dev@yandex.ru";
 
 $headers  = 'MIME-Version: 1.0' . "\r\n";
 $headers .= "Content-type: text/html; charset=utf-8 \r\n";
-$headers .= "From: SUPER HORSE NUTRITION <classichorse@yandex.ru>\r\n";
+$headers .= "From: SUPER HORSE NUTRITION <info@korma-anilyn.ru>\r\n";
 
 $formcontentCustomer = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
   <html
@@ -171,10 +172,10 @@ $formcontentCustomer = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                   >
                     Также, вы можете связаться с нами прямо сейчас по почте
                     <a
-                      href="mailto:classichorse@yandex.ru"
+                      href="mailto:info@korma-anilyn.ru"
                       target="_blank"
                       style=\'margin: 0;padding: 0;font-size: 100%;font-family: &apos;Avenir Next&apos;, "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;line-height: 1.65;color: #2A713E;\'
-                      >classichorse@yandex.ru</a
+                      >info@korma-anilyn.ru</a
                     >
                     или телефону
                     <a
@@ -266,9 +267,9 @@ $formcontentCustomer = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                     style=\'margin: 0;padding: 0;font-size: 14px;font-family: &apos;Avenir Next&apos;, "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;line-height: 1.65;font-weight: normal;margin-bottom: 0;color: #888;text-align: center;\'
                   >
                     <a
-                      href="mailto:classichorse@yandex.ru"
+                      href="mailto:info@korma-anilyn.ru"
                       style=\'margin: 0;padding: 0;font-size: 100%;font-family: &apos;Avenir Next&apos;, "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;line-height: 1.65;color: #888;text-decoration: none;font-weight: bold;\'
-                      >classichorse@yandex.ru
+                      >info@korma-anilyn.ru
                     </a>
                   </p>
                 </td>
@@ -432,7 +433,7 @@ $formcontentAdmin = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "h
                     <a href="http://superhorse.ru" style="margin: 0;padding: 0;font-size: 100%;font-family: \'Avenir Next\', &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;line-height: 1.65;color: #888;text-decoration: none;font-weight: bold;">superhorse.ru</a>
                   </p>
                   <p style="margin: 0;padding: 0;font-size: 14px;font-family: \'Avenir Next\', &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;line-height: 1.65;font-weight: normal;margin-bottom: 0;color: #888;text-align: center;">
-                    <a href="mailto:classichorse@yandex.ru" style="margin: 0;padding: 0;font-size: 100%;font-family: \'Avenir Next\', &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;line-height: 1.65;color: #888;text-decoration: none;font-weight: bold;">classichorse@yandex.ru
+                    <a href="mailto:info@korma-anilyn.ru" style="margin: 0;padding: 0;font-size: 100%;font-family: \'Avenir Next\', &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;line-height: 1.65;color: #888;text-decoration: none;font-weight: bold;">info@korma-anilyn.ru
                   </a></p>
                 </td>
               </tr>
@@ -445,6 +446,7 @@ $formcontentAdmin = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "h
 
 if(isset($customerEmail) and isset($customerPhone)) {
     mail($adminEmail, $subject, $formcontentAdmin, $headers);
+    mail($adminEmailCopy, $subject, $formcontentAdmin, $headers);
     mail($customerEmail, $subject, $formcontentCustomer, $headers);
 }
 

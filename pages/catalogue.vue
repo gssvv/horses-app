@@ -38,8 +38,9 @@ export default {
   },
   computed: {
     groupId() {
-      const { group } = this.$route.query
-      return group
+      // const { group } = this.$route.query
+      // return group
+      return 'horses-food'
     }
   },
   created() {},

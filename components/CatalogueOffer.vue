@@ -2,7 +2,7 @@
   .offer
     .container
       .content
-        p.text Мы предлагаем качественные и эффективные витаминно-минеральные добавки для обогащения традиционного рациона лошадей
+        p.text Мы предлагаем качественные и эффективные витаминно-минеральные добавки для обогащения традиционного рациона лошадей, профилактики заболеваний и улучшения спортивных результатов.
         
         nuxt-link.button.white.big.non-trans(to="catalogue") Каталог
 
@@ -15,7 +15,6 @@ export default {
   }
 }
 </script>
-
 
 <style lang="sass" scoped>
 @import '@/assets/style/variables.sass'
@@ -37,20 +36,20 @@ export default {
         font-weight: 400
       .button
         margin: 0
-        
+
   @include respond-to(lg)
     .container
       .content
         .text
           font-size: 18px
-        
+
   @include respond-to(md)
     .container
       .content
         grid-gap: 30px
         .button
           font-size: 20px
-        
+
   @include respond-to(sm)
     .container
       .content
@@ -60,7 +59,4 @@ export default {
         justify-items: center
         .text
           text-align: center
-
-
 </style>
-

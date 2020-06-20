@@ -10,13 +10,12 @@
           .logo
             img(src='@/assets/img/logo-400.png' alt='Classic Horse Nutrition – Качественные и эффективные кормовые добавки для лошадей')
           .phone-n-mail
-            a.phone(href='tel:+7 (928) 332-22-29' target='_blank') 
+            a.phone(href='tel:8 (800) 333-53-42' target='_blank') 
               i.fas.fa-phone
-              | +7 (928) 332-22-29
-            a.mail(href='mailto:classichorse@yandex.ru  ' target='_blank') 
+              | 8 (800) 333-53-42
+            a.mail(href='mailto:info@korma-anilyn.ru  ' target='_blank') 
               i.fas.fa-envelope
-              | classichorse@yandex.ru  
-          .address 350900, Россия, Краснодарский край, г. Краснодар, пер. Ленский, 23 
+              | info@korma-anilyn.ru  
           .socials
             a.item(href="https://vk.com/id541234365" target="_blank"): i.fab.fa-vk
             a.item(href="https://www.facebook.com/classic.horsenutrition" target="_blank"): i.fab.fa-facebook-f

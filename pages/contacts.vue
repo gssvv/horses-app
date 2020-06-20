@@ -44,11 +44,10 @@
 
         .contact-info
           h2.title Контакты
-          .name ООО "Kubanagrotorg" Krasnodar, Russia,
-          .phone Горячая линия/Hotline: 
-            a(href='tel:+7 (928) 332-22-29' target='_blank').dif +7 (928) 332-22-29
+          .phone Телефон: 
+            a(href='tel:8 (800) 333-53-42' target='_blank').dif 8 (800) 333-53-42
           .mail Почта/Email: 
-            a(href='mailto:classichorse@yandex.ru' target='_blank').dif classichorse@yandex.ru
+            a(href='mailto:info@korma-anilyn.ru' target='_blank').dif info@korma-anilyn.ru
           .socials
             a.item(href="https://vk.com/id541234365" target="_blank"): i.fab.fa-vk
             a.item(href="https://www.facebook.com/classic.horsenutrition" target="_blank"): i.fab.fa-facebook-f
@@ -198,7 +197,7 @@ export default {
         text-transform: uppercase
         margin: 0
       .note
-        font-size: 14px 
+        font-size: 14px
         font-weight: 600
         margin: 0
       .contact-info
@@ -254,7 +253,7 @@ export default {
               &:focus
                 outline: none
             .error
-              font-size: 13px 
+              font-size: 13px
               color: #DC4C40
               margin: 2px 0 0 0
           .button-wrapper
@@ -294,6 +293,4 @@ export default {
         .contact-info
           order: -1
           padding: 0 0 15px 0
-        
-
 </style>

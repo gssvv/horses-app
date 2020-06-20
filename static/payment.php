@@ -7,7 +7,7 @@
 // регистрационная информация (логин, пароль #1)
 // registration info (login, password #1)
 $mrh_login = "hbhorse";
-$mrh_pass1 = "cjJQQyr69bxR0K9Ys1DJ";
+$mrh_pass1 = "j9jVTr12sVUYQLD3eAK9";
 // test
 // $mrh_pass1 = "KILwqOP69mp04r4qvLDK";
 
@@ -44,7 +44,7 @@ $culture = "ru";
 
 // формирование подписи
 // generate signature
-$crc  = md5("$mrh_login:$out_summ:$inv_id:$mrh_pass1:Shp_area=$shp_area:Shp_email=$shp_email:Shp_info=$shp_info:Shp_name=$shp_name:Shp_passport=$shp_passport:Shp_phone=$shp_phone");
+$crc = md5("$mrh_login:$out_summ:$inv_id:$mrh_pass1:Shp_area=$shp_area:Shp_email=$shp_email:Shp_info=$shp_info:Shp_name=$shp_name:Shp_passport=$shp_passport:Shp_phone=$shp_phone");
 
 print $crc;
 // форма оплаты товара

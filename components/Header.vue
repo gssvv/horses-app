@@ -10,7 +10,7 @@
           li(v-for="(item, index) in menu" :key="index"): nuxt-link(:to='item.href' @click='toggleMenu()') {{ item.title }}
         .phone
           .icon: i.fas.fa-phone
-          .number: a(href='tel:+7 (928) 332-22-29') +7 (928) 332-22-29
+          .number: a(href='tel:8 (800) 333-53-42') 8 (800) 333-53-42
         .cart
           nuxt-link(to='/cart').icon
             i.fas.fa-shopping-cart
@@ -19,7 +19,7 @@
     .mobile-menu(@click.self="toggleMenu()" :class="{active: menuActive}")
       .wrapper
         .close(@click='toggleMenu()'): i.fas.fa-times
-        .number: a(href='tel:+7 (928) 332-22-29') +7 (928) 332-22-29
+        .number: a(href='tel:8 (800) 333-53-42') 8 (800) 333-53-42
         ul.menu 
           li(v-for="(item, index) in menu" :key="index" @click="toggleMenu()"): nuxt-link(:to='item.href') {{ item.title }}
 
@@ -48,7 +48,7 @@ export default {
           href: '/gde-kupit'
         },
         {
-          title: 'Контакы',
+          title: 'Контакты',
           href: '/contacts'
         }
       ],
@@ -65,7 +65,6 @@ export default {
   }
 }
 </script>
-
 
 <style lang="sass" scoped>
 @import '@/assets/style/variables.sass'
@@ -87,7 +86,7 @@ export default {
             a
               &:hover
                 color: #fff
-              &.nuxt-link-exact-active 
+              &.nuxt-link-exact-active
                 color: #fff
   .container
     .content
@@ -113,7 +112,7 @@ export default {
             font-weight: 400
             &:hover
               color: $primary
-            &.nuxt-link-exact-active 
+            &.nuxt-link-exact-active
               color: $primary
       .phone
         display: flex
@@ -125,7 +124,7 @@ export default {
           font-size: 22px
           font-weight: 600
           a
-            text-decoration: none 
+            text-decoration: none
       .cart
         font-size: 20px
         position: relative
@@ -191,11 +190,11 @@ export default {
         font-size: 24px
         font-weight: 500
         li
-          a 
+          a
             text-decoration: none
             &:hover
               color: $primary
-            &.nuxt-link-exact-active 
+            &.nuxt-link-exact-active
               color: $primary
     &.active
       visibility: initial
@@ -220,8 +219,4 @@ export default {
             height: 80px
         .phone
           display: none
-
-
-
 </style>
-
