@@ -14,6 +14,7 @@ module.exports = {
     title:
       'Classic Horse Nutrition – Качественные и эффективные кормовые добавки для лошадей',
     meta: [
+      { name: 'yandex-verification', content: 'baaac08bfaa5e9b2' },
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {

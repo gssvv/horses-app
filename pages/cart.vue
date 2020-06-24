@@ -10,7 +10,7 @@
 
             p.desc Заказ <span class='green' v-if='finalInfo.id'>№{{ finalInfo.id }}</span> успешно начат. На указанную вами почту <span class='green'>{{ finalInfo.email }}</span> было отправлено уведомление с информацией о заказе (письмо может по ошибке попасть в папку СПАМ). 
             p.desc(v-if='finalInfo.id') Также, в ходе транзакции на указанные вами контактные данные был отправлен <span class='green'>электронный чек</span> – настоятельно рекомендуем сохранить его.
-            p.desc Если у вас возникли проблемы с заказом или есть другие вопросы – обратитесь к нам по телефону <a href='tel:+7 (928) 332-22-29'>+7 (928) 332-22-29</a> или по почте <a href='info@korma-anilyn.ru'>info@korma-anilyn.ru</a>
+            p.desc Если у вас возникли проблемы с заказом или есть другие вопросы – обратитесь к нам по телефону <a href='tel:8 (800) 333-53-42'>8 (800) 333-53-42</a> или по почте <a href='info@superhorse.ru'>info@superhorse.ru</a>
 
             nuxt-link(to='/').button.big На главную
 
@@ -20,7 +20,7 @@
 
             h1.title Ошибка
 
-            p.desc При обработке заказа возникла ошибка. Попробуйте позже, либо обратитесь к нам по телефону <a href='tel:+7 (928) 332-22-29'>+7 (928) 332-22-29</a> или по почте <a href='info@korma-anilyn.ru'>info@korma-anilyn.ru</a>
+            p.desc При обработке заказа возникла ошибка. Попробуйте позже, либо обратитесь к нам по телефону <a href='tel:8 (800) 333-53-42'>8 (800) 333-53-42</a> или по почте <a href='info@superhorse.ru'>info@superhorse.ru</a>
 
             nuxt-link(to='/').button.big На главную
 
@@ -76,7 +76,7 @@
           .result
             form.row(ref='payForm' action='https://merchant.roboxchange.com/Index.aspx' method='POST')
               .hidden
-                input(name='MrchLogin' value='hbhorse')
+                input(name='MrchLogin' value='SuperHorse.ru')
                 input(name='OutSum' :value='finalPrice')
                 input(name='InvId' value='0')
                 input(name='Desc' value='Заказ на сайте superhorse.ru')

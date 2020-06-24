@@ -47,7 +47,7 @@
           .phone Телефон: 
             a(href='tel:8 (800) 333-53-42' target='_blank').dif 8 (800) 333-53-42
           .mail Почта/Email: 
-            a(href='mailto:info@korma-anilyn.ru' target='_blank').dif info@korma-anilyn.ru
+            a(href='mailto:info@superhorse.ru' target='_blank').dif info@superhorse.ru
           .socials
             a.item(href="https://vk.com/id541234365" target="_blank"): i.fab.fa-vk
             a.item(href="https://www.facebook.com/classic.horsenutrition" target="_blank"): i.fab.fa-facebook-f

@@ -5,13 +5,13 @@ $email = $_POST['email'];
 $phone = $_POST['phone'] ? $_POST['phone'] : '<i>Не указано</i>';
 $message = $_POST['message'] ? $_POST['message'] : '<i>Не указано</i>';
 
-$recipient = "info@korma-anilyn.ru";
+$recipient = "info@superhorse.ru";
 $recipient_copy = "yuriy_p@korma-anilyn.ru";
 $subject = "Форма обратной связи";
 
 $headers  = 'MIME-Version: 1.0' . "\r\n";
 $headers .= "Content-type: text/html; charset=utf-8 \r\n";
-$headers .= "From: SUPER HORSE NUTRITION <info@korma-anilyn.ru>\r\n";
+$headers .= "From: SUPER HORSE NUTRITION <info@superhorse.ru>\r\n";
 
 $formcontent = 
 '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -234,9 +234,9 @@ $formcontent =
                   style=\'margin: 0;padding: 0;font-size: 14px;font-family: &apos;Avenir Next&apos;, "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;line-height: 1.65;font-weight: normal;margin-bottom: 0;color: #888;text-align: center;\'
                 >
                   <a
-                    href="mailto:info@korma-anilyn.ru"
+                    href="mailto:info@superhorse.ru"
                     style=\'margin: 0;padding: 0;font-size: 100%;font-family: &apos;Avenir Next&apos;, "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;line-height: 1.65;color: #888;text-decoration: none;font-weight: bold;\'
-                    >info@korma-anilyn.ru
+                    >info@superhorse.ru
                   </a>
                 </p>
               </td>

@@ -179,10 +179,10 @@ $formcontentCustomer = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                     >
                     или телефону
                     <a
-                      href="tel:+7 (928) 332-22-29"
+                      href="tel:8 (800) 333-53-42"
                       target="_blank"
                       style=\'margin: 0;padding: 0;font-size: 100%;font-family: &apos;Avenir Next&apos;, "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;line-height: 1.65;color: #2A713E;\'
-                      >+7 (928) 332-22-29.
+                      >8 (800) 333-53-42.
                     </a>
                   </p>
   

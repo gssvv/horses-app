@@ -6,7 +6,9 @@
 
 // регистрационная информация (логин, пароль #1)
 // registration info (login, password #1)
-$mrh_login = "hbhorse";
+// 26 - нет такого магазина
+// $mrh_login = "ClassicHorseNutrition";
+$mrh_login = "SuperHorse.ru";
 $mrh_pass1 = "j9jVTr12sVUYQLD3eAK9";
 // test
 // $mrh_pass1 = "KILwqOP69mp04r4qvLDK";

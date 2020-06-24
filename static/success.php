@@ -1,13 +1,13 @@
 <?
 
-$invId = urldecode($_GET['inv_id']);
+$invId = urldecode($_GET['InvId']);
 $customerEmail = urldecode($_GET['Shp_email']);
 $customerPhone = urldecode($_GET['Shp_phone']);
 $customerName = urldecode($_GET['Shp_name']);
 $customerArea = urldecode($_GET['Shp_area']);
 $customerPassport = urldecode($_GET['Shp_passport']);
 $customerInfoInline = urldecode($_GET['Shp_info']);
-$summ = (float)urldecode($_GET['out_summ']);
+$summ = (float)urldecode($_GET['OutSumm']);
 
 $customerInfoArr = explode(";", $customerInfoInline);
 $customerInfo = '';
@@ -36,13 +36,13 @@ foreach($customerInfoArr as $tr) {
 
 $subject = 'Уведомление о покупке';
 
-$adminEmail = "info@korma-anilyn.ru";
+$adminEmail = "info@superhorse.ru";
 $adminEmailCopy = "yuriy_p@korma-anilyn.ru";
 // $adminEmail = "the.alex.dev@yandex.ru";
 
 $headers  = 'MIME-Version: 1.0' . "\r\n";
 $headers .= "Content-type: text/html; charset=utf-8 \r\n";
-$headers .= "From: SUPER HORSE NUTRITION <info@korma-anilyn.ru>\r\n";
+$headers .= "From: SUPER HORSE NUTRITION <info@superhorse.ru>\r\n";
 
 $formcontentCustomer = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
   <html
@@ -171,17 +171,17 @@ $formcontentCustomer = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                   >
                     Также, вы можете связаться с нами прямо сейчас по почте
                     <a
-                      href="mailto:info@korma-anilyn.ru"
+                      href="mailto:info@superhorse.ru"
                       target="_blank"
                       style=\'margin: 0;padding: 0;font-size: 100%;font-family: &apos;Avenir Next&apos;, "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;line-height: 1.65;color: #2A713E;\'
-                      >info@korma-anilyn.ru</a
+                      >info@superhorse.ru</a
                     >
                     или телефону
                     <a
-                      href="tel:+7 (928) 332-22-29"
+                      href="tel:8 (800) 333-53-42"
                       target="_blank"
                       style=\'margin: 0;padding: 0;font-size: 100%;font-family: &apos;Avenir Next&apos;, "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;line-height: 1.65;color: #2A713E;\'
-                      >+7 (928) 332-22-29.
+                      >8 (800) 333-53-42.
                     </a>
                   </p>
   
@@ -266,9 +266,9 @@ $formcontentCustomer = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                     style=\'margin: 0;padding: 0;font-size: 14px;font-family: &apos;Avenir Next&apos;, "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;line-height: 1.65;font-weight: normal;margin-bottom: 0;color: #888;text-align: center;\'
                   >
                     <a
-                      href="mailto:info@korma-anilyn.ru"
+                      href="mailto:info@superhorse.ru"
                       style=\'margin: 0;padding: 0;font-size: 100%;font-family: &apos;Avenir Next&apos;, "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;line-height: 1.65;color: #888;text-decoration: none;font-weight: bold;\'
-                      >info@korma-anilyn.ru
+                      >info@superhorse.ru
                     </a>
                   </p>
                 </td>
@@ -432,7 +432,7 @@ $formcontentAdmin = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "h
                     <a href="http://superhorse.ru" style="margin: 0;padding: 0;font-size: 100%;font-family: \'Avenir Next\', &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;line-height: 1.65;color: #888;text-decoration: none;font-weight: bold;">superhorse.ru</a>
                   </p>
                   <p style="margin: 0;padding: 0;font-size: 14px;font-family: \'Avenir Next\', &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;line-height: 1.65;font-weight: normal;margin-bottom: 0;color: #888;text-align: center;">
-                    <a href="mailto:info@korma-anilyn.ru" style="margin: 0;padding: 0;font-size: 100%;font-family: \'Avenir Next\', &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;line-height: 1.65;color: #888;text-decoration: none;font-weight: bold;">info@korma-anilyn.ru
+                    <a href="mailto:info@superhorse.ru" style="margin: 0;padding: 0;font-size: 100%;font-family: \'Avenir Next\', &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;line-height: 1.65;color: #888;text-decoration: none;font-weight: bold;">info@superhorse.ru
                   </a></p>
                 </td>
               </tr>
@@ -450,7 +450,7 @@ if(isset($customerEmail) and isset($invId)) {
 }
 
 header("HTTP/1.1 301 Moved Permanently");
-header("Location: http://superhorse.ru/cart?status=success&email=$customerEmail&id=$invId");
+header("Location: http://superhorse.ru/cart?status=success&email=$customerEmail&id=$invId&summ=$summ");
 exit();
 
 ?>
